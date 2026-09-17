@@ -25,7 +25,6 @@ This course provides a first introduction to quantitative data analysis in educa
 # Instructors
 - David D. Liebowitz (office hours: Thursdays, 11:30 - 1:00 Lokey 102S or [Zoom](https://uoregon.zoom.us/j/6336067468))
 - Brittany Spinner
-- Havisha Khurana (office hour [signup](https://outlook.office365.com/book/educ641_officehour_havi@uoregon.edu/))
 
 # Student Learning Outcomes
 By the end of this term, it is expected that students will be able to:
@@ -80,7 +79,7 @@ Here are some sites where you can find the answers to many R questions and learn
 
 ### Using Artificial Intelligence (AI) Tools
 
-Artificial Intelligence (AI) chatbots and the large language models (LLMs) on which they rely have dramatically increased the speed and efficiency of many programmers. Members of the teaching team regularly use such tools in their analytic and drafting tasks. That said, they are not (as least currently) substitutes for skilled analysts and writers. Beyond AI chatbots' known proclivity for "hallucinating" facts and reproducing social biases, their solutions to programming tasks often require adaptation and revision by a knowledgeable human. Further, because their ability to generate text relies on using billions of phrase chunks in the public domain to predict the next word, their language on technical topics can be imprecise when many other writers on these topics are also imprecise. Thus, while we encourage you to investigate how AI chatbots can help improve your programming and statistical analysis skills, we caution you to skeptically review all code and language produced to ensure its alignment to the course expectations. To be explicit: you may use AI chatbots for assistance with your assignments. If you use one to generate your responses, you must indicate so on your assignment. You do not need to do so if you have used these tools only to help with coding tasks and/or light editing of your written responses. You are likely already familiar with OpenAI's [ChatGPT](chat.openai.com). As you gain more experience as a programmer, you may want to use an AI tool that is designed specifically to help with coding such as [GitHub Copilot](github.com/features/copilot) or [AskCodi](https://www.askcodi.com/).
+Artificial Intelligence (AI) chatbots and the large language models (LLMs) on which they rely have dramatically increased the speed and efficiency of many programmers. Members of the teaching team regularly use such tools in their analytic and drafting tasks. That said, they are not (as least currently) substitutes for skilled analysts and writers. Beyond AI chatbots' known proclivity for "hallucinating" facts and reproducing social biases, their solutions to programming tasks often require adaptation and revision by a knowledgeable human. Further, because their ability to generate text relies on using billions of phrase chunks in the public domain to predict the next word, their language on technical topics can be imprecise when many other writers on these topics are also imprecise (though they have improved markedly in the past 2 years on this front). Thus, while we encourage you to investigate how AI chatbots can help improve your programming and statistical analysis skills, we caution you to skeptically review all code and language produced to ensure its alignment to the course expectations. To be explicit: you may use AI chatbots for assistance with your assignments. If you use one to generate your responses, you must indicate so on your assignment. You do not need to do so if you have used these tools only to help with coding tasks and/or light editing of your written responses. You are likely already familiar with generic AI interfaces like ChatGPT, Claude, etc. As you gain more experience as a programmer, you may want to use an AI tool that is designed specifically to help with coding such as [GitHub Copilot](github.com/features/copilot), [Codex](https://openai.com/codex/), [Claude Code](https://code.claude.com/docs/en/overview) or [AskCodi](https://www.askcodi.com/).
 
 # Schedule
 
@@ -109,6 +108,9 @@ The goal of the assignments is to practice the concepts and vocabulary we have b
 ## Final
 The final assignment involves a more extended application and synthesis of the concepts of descriptive and relational applied data analysis covered in this course.
 
+## Late Work
+Assignments are due at 11:59pm on their due date. If circumstances arise that require an extension on an assignment, please communicate with the lead instructor *prior* to the assignment's due date. We will publish the answer keys to assignments prior to class the following day; thus, late assignments will be penalized by two (2) points. While it is acceptable to consult the answer keys if you submit an assignment late, submissions that re-iterate word for word (or nearly so) the answer key will not be accepted. All late assignments must be turned in by the last day of classes. Late final projects may result in a final grade of I or D/F. Assignments scoring below a 13 may be revised and can receive a maximum score of up to 13.
+
 # Student Engagement Inventory
 Graduate students are expected to perform work of high quality and quantity, typically with forty hours of student engagement for each student credit hour. For this course, the following table shows the number of hours a typical student would expect to spend in each of the following activities:
 
@@ -128,12 +130,12 @@ The University of Oregon is located on Kalapuya Ilihi, the traditional indigenou
 ## Graduate Assistants
 If you are concurrently taking any courses with the GEs assigned to this course, please let David Liebowitz know. The GEs will not be involved with any review of assignments for students in this course who are taking other courses concurrently.
 
-## Absence and Attendance Policies
-This is a face-to-face course. Attendance is important because we will develop our knowledge through in-class activities that require your active engagement. We’ll have discussions and group activities that will be richer for your presence, and that you won’t be able to benefit from if you are not there. While there is not an automatic grade deduction for missing classes, we hope to create a value proposition by which attending class will help you learn more and excessive absences will make it challenging to succeed in the course. 
+# Absence and Attendance Policies
+This is a face-to-face course. Attendance is important because we will develop our knowledge through in-class activities that require your active engagement. We’ll have discussions and group activities that will be richer for your presence, and that you won’t be able to benefit from if you are not there. Further, you will establish academic connections that will benefit your learning during your time in the course, throughout your degree program and beyond into your professional path. While there is not an automatic grade deduction for missing classes, we hope to create a value proposition by which attending class will help you learn more and excessive absences will make it challenging to succeed in the course. 
 
-We know our UO community will continue to navigate illness, and some students will need to rest at home if they become sick. Please take absences only when necessary, so when they are necessary, your prior attendance will have positioned you for success. There may be situations beyond the control of individual students that lead to multiple absences such as becoming seriously ill or caring for others. Please communicate with me if such events occur for you.
+Illness and irregular, emergency events will occur. Please take absences only when necessary, so when they are necessary, your prior attendance will have positioned you for success. There may be situations beyond the control of individual students that lead to multiple absences such as becoming seriously ill or caring for others. Please communicate with me if such events occur for you.
   
-## Children in Class
+# Children in Class
 Federal Title IX regulations provide pregnant and parenting students with certain rights to modifications that may impact attendance, coursework and/or exams. Students needing these modifications are asked to fill out this [form](https://cm.maxient.com/reportingform.php?UnivofOregon&layout_id=108) with [OICRC](https://investigations.uoregon.edu/). OICRC will work with the student and the instructor to determine appropriate modifications.
 
 As a parent of three young children, I understand the difficulty in balancing academic, work, and family commitments.  Here are my policies (with credit to [Daniel Anderson](https://github.com/datalorax)) regarding children in class:
@@ -144,4 +146,5 @@ As a parent of three young children, I understand the difficulty in balancing ac
 * All students are expected to join with me in creating a welcoming environment that is respectful of your classmates who bring children to class.
 * I understand that sleep deprivation and exhaustion are among the most difficult aspects of caring for young children. The struggle of balancing school, work, childcare, and graduate school is tiring (not to mention being in the middle of a pandemic!), and I will do my best to accommodate any such issues while maintaining the same high expectations for all students enrolled in the class. Please do not hesitate to contact me with any questions or concerns.
 
-
+# University Course Policies
+Please read and make sure you are familiar with the important policies that apply to all UO courses, which can be found at [University Course Policies: a Guide for Students](https://teaching.uoregon.edu/university-course-policies).  The University is committed to providing equal opportunities to all students in a learning environment free from discrimination and harassment. Students with disabilities may request accommodations by contacting the Accessible Education Center (AEC) at <uoaec@uoregon.edu> or 541-346-1155. Students in need of accommodations due to pregnancy, military leave, and religious observances should contact the Office of Equal Opportunity and Access at <eoa@uoregon.edu> or 541-326-3123.
