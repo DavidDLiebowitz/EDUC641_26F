@@ -103,7 +103,8 @@ Lectures:
 
 Assignment 2: 
 
-- Due: October 19, 11:59pm
+- Due: October 26, 11:59pm
+
 <!--
 - [html file](./assignments/assignment02.html)
 - [cat.csv dataset](./data/cat.csv)
@@ -190,6 +191,7 @@ Lecture slides:
 Assignment 4: 
 
 - Due Nov. 30, 11:59pm 
+
 <!--
 - [html file](./assignments/assignment04.html)
 - [cont.csv](./data/cont.csv)
