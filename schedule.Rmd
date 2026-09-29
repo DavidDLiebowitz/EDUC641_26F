@@ -41,7 +41,7 @@ Lectures:
 
 Labs:
 
-- Lab overview and expectations: [pdf](./labs/EDUC 641 Lab Overview.pdf)
+- Lab overview and expectations: [pdf](./labs/EDUC 641 Lab Overview F26.pdf)
 - Lab 1: [doc](./labs/Lab 1.docx)
 
 
