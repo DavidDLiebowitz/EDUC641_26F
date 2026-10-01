@@ -303,7 +303,7 @@ include_graphics("retract.jpg")
 ---
 # The measure of our class
 
-Qualtrics: [https://oregon.qualtrics.com/jfe/form/SV_9GJ7FP4F6iMRPiC](https://oregon.qualtrics.com/jfe/form/SV_bOWcln89jwmD1SC)
+Qualtrics: [(https://oregon.qualtrics.com/jfe/form/SV_bOWcln89jwmD1SC](https://oregon.qualtrics.com/jfe/form/SV_bOWcln89jwmD1SC)
 
 or
 
