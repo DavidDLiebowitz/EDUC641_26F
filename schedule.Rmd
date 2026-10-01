@@ -29,7 +29,7 @@ Objectives:
 
 Readings: 
 
-- Complete **prior to Oct. 1** class: [LSWR Chapters 2 and 3](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Light, Singer & Willet, 1990, pp. 1-40](./assignments/Light Singer Willett 1990.pdf)
+- Complete **prior to Oct. 1** class: [LSWR Chapters 2 and 3](https://learningstatisticswithr.com/02-studydesign.html) and [Light, Singer & Willet, 1990, pp. 1-40](./assignments/Light Singer Willett 1990.pdf)
 
 
 Lectures:
@@ -58,7 +58,7 @@ Objectives:
 
 Readings: 
 
-- Complete **prior to Oct. 6** class: [LSWR Chapter 6](https://learningstatisticswithr.com/lsr-0.6.pdf)
+- Complete **prior to Oct. 6** class: [LSWR Chapter 6](https://learningstatisticswithr.com/06-graphics.html)
 
 Lectures: 
 <!--
@@ -89,7 +89,7 @@ Objectives:
 
 Readings: 
 
-- Complete **prior to Oct. 15** class: [LSWR Chapters 11 and 12](https://learningstatisticswithr.com/lsr-0.6.pdf), [Clayton 2020](https://nautil.us/how-eugenics-shaped-statistics-238014), and [Evans 2020](https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred); alternate source for [Evans](./assignments/evans_2020.pdf) 
+- Complete **prior to Oct. 15** class: [LSWR Chapters 11 and 12](https://learningstatisticswithr.com/11-hypothesistesting.html), [Clayton 2020](https://nautil.us/how-eugenics-shaped-statistics-238014), and [Evans 2020](https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred); alternate source for [Evans](./assignments/evans_2020.pdf) 
   + See lecture notes on what to focus on (and not) in LSWR
 
 Lectures:
@@ -131,8 +131,8 @@ Objectives:
 
 Readings: 
 
-- Complete **prior to Oct. 29** class: [LSWR Chapter 5](https://learningstatisticswithr.com/lsr-0.6.pdf)
-- Complete **prior to Nov. 10** class: [LSWR Chapter 10](https://learningstatisticswithr.com/lsr-0.6.pdf)
+- Complete **prior to Oct. 29** class: [LSWR Chapter 5](https://learningstatisticswithr.com/05-descriptives.html)
+- Complete **prior to Nov. 10** class: [LSWR Chapter 10](https://learningstatisticswithr.com/10-estimation.html)
 
 
 Lecture slides: 
@@ -173,7 +173,7 @@ Objectives:
 
 Readings: 
 
-- Complete **prior to Nov. 21** class: [LSWR Chapter 15.1 and 15.2](https://learningstatisticswithr.com/lsr-0.6.pdf)
+- Complete **prior to Nov. 21** class: [LSWR Chapter 15.1 and 15.2](https://learningstatisticswithr.com/15-regression.html)
 
 + **No class on 11/26 (University holiday)**
   
