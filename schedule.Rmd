@@ -61,12 +61,12 @@ Readings:
 - Complete **prior to Oct. 6** class: [LSWR Chapter 6](https://learningstatisticswithr.com/06-graphics.html)
 
 Lectures: 
-<!--
+
 - Class 3 (10/6) slides: [html](./slides/EDUC641_3_categdescr.html) | [pdf](./slides/EDUC641_3_categdescr.pdf)
 - Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty_codebook.pdf)
 - R code: [R script](./slides/EDUC641_3_code.R)
 - Lab activities: [doc](./labs/Lab2.docx)
--->
+
 
 Assignment 1: 
 

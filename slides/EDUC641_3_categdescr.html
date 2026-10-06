@@ -4,7 +4,7 @@
     <title>Summarizing and displaying categorical data</title>
     <meta charset="utf-8" />
     <meta name="author" content="David D. Liebowitz" />
-    <script src="EDUC641_3_categdescr_files/header-attrs-2.20/header-attrs.js"></script>
+    <script src="EDUC641_3_categdescr_files/header-attrs-2.31/header-attrs.js"></script>
     <link href="EDUC641_3_categdescr_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="EDUC641_3_categdescr_files/remark-css-0.0.1/uo.css" rel="stylesheet" />
     <link href="EDUC641_3_categdescr_files/remark-css-0.0.1/ki-fonts.css" rel="stylesheet" />
@@ -32,7 +32,7 @@ class: center, middle, inverse, title-slide
 
 # Roadmap
 
-&lt;img src="Roadmap_1.png" width="80%" style="display: block; margin: auto;" /&gt;
+&lt;img src="Roadmap_1.png" alt="" width="80%" style="display: block; margin: auto;" /&gt;
 
 .blue[*This unit borrows heavily (with permission) from John B. Willett's course S-010Y*]
 
@@ -56,7 +56,7 @@ class: center, middle, inverse, title-slide
 ]
 ]
 .pull-right[
-&lt;img src="mccleskey.png" width="1848" style="display: block; margin: auto;" /&gt;
+&lt;img src="mccleskey.png" alt="" width="1848" style="display: block; margin: auto;" /&gt;
 - [Baldus, Pulaski &amp; Woodworth (1983). A comparative review of death sentences: An empirical study of the Georgia experience. *J. Crim Law.*](https://www.jstor.org/stable/1143133)
 
 ]
@@ -97,7 +97,7 @@ Baldus, Pulaski and Woodworth (1983) compiled criminal justice and crude demogra
 
 
 
-```r
+``` r
 d &lt;- read.csv('C:/Users/daviddl/Documents/EDUC/EDUC641_22F/data/deathpenalty.csv')
 # but there are a lot of reasons to avoid using a hard-coded filepath
 # so instead, we'll use our first R package
@@ -115,7 +115,7 @@ d &lt;- read.csv('C:/Users/daviddl/Documents/EDUC/EDUC641_22F/data/deathpenalty.
 Baldus, Pulaski and Woodworth (1983) compiled criminal justice and crude demographic information on all convicted murderers in the state of Georgia from in the mid-1970s. We have access to a simplified version of these data.
 
 
-```r
+``` r
 # The first thing we'll do is to install the package
 # install.packages("here")  &lt;- when you do this, remove the #
 # don't forget the quotes around the package name!
@@ -133,7 +133,7 @@ While you're at it, do the same for `tidyverse`. The `tidyverse` is a collection
 Baldus, Pulaski and Woodworth (1983) compiled criminal justice and crude demographic information on all convicted murderers in the state of Georgia from in the mid-1970s. We have access to a simplified version of these data.
 
 
-```r
+``` r
 # Ok, now we're ready to get started:
 
 df &lt;- read.csv(here("data/deathpenalty.csv"))
@@ -149,7 +149,7 @@ df &lt;- read.csv(here("data/deathpenalty.csv"))
 # Understanding data structure
 
 
-```r
+``` r
 df
 ```
 
@@ -2636,7 +2636,7 @@ df
 # Understanding data structure
 
 
-```r
+``` r
 names(df)
 ```
 
@@ -2644,7 +2644,7 @@ names(df)
 #&gt; [1] "id"       "deathpen" "rdefend"  "rvictim"
 ```
 
-```r
+``` r
 head(df)
 ```
 
@@ -2668,7 +2668,7 @@ Some vocabulary:
 # Putting words to numbers
 
 
-```r
+``` r
 str(df)
 ```
 
@@ -2684,7 +2684,7 @@ str(df)
 We know from our codebook what this long list of numbers means, so let's make our dataset a little more readable...
 
 
-```r
+``` r
 df$deathpen &lt;- factor(df$deathpen, 
                       levels = c(0,1), labels = c("No", "Yes"))
 head(df)
@@ -2716,7 +2716,7 @@ head(df)
 One powerful thing to do with data is to just count it up. How many defendants were sentenced to death?
 
 
-```r
+``` r
 table(df$deathpen)
 ```
 
@@ -2735,12 +2735,12 @@ table(df$deathpen)
 Even more powerful is to visualize these counts!
 
 
-```r
+``` r
 counts &lt;- table(df$deathpen)
 barplot(counts, xlab = "Sentenced to Death?")
 ```
 
-&lt;img src="EDUC641_3_categdescr_files/figure-html/unnamed-chunk-12-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_3_categdescr_files/figure-html/unnamed-chunk-12-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -2751,13 +2751,13 @@ barplot(counts, xlab = "Sentenced to Death?")
 We can also ask R to do this for us
 
 
-```r
+``` r
 prop &lt;- prop.table(table(df$rvictim))
 barplot(prop, xlab = "Race of Victim",
         ylab = "Proportion of victims")
 ```
 
-&lt;img src="EDUC641_3_categdescr_files/figure-html/unnamed-chunk-13-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_3_categdescr_files/figure-html/unnamed-chunk-13-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 &gt; After inspecting this *chart of the proportions* of the variable *RVICTIM* in our data, we conclude ...
 
@@ -2766,12 +2766,12 @@ barplot(prop, xlab = "Race of Victim",
 Let's start to get familiar with the beauty of `ggplot`
 
 
-```r
+``` r
 rd &lt;- ggplot(df, aes(rdefend)) + geom_bar() +
          xlab("Race of Defendant") 
 ```
 
-&lt;img src="EDUC641_3_categdescr_files/figure-html/unnamed-chunk-15-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_3_categdescr_files/figure-html/unnamed-chunk-15-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 &gt; After inspecting this *chart* of the values of the variable *RDEFEND* in our data, we conclude ...
 
@@ -2810,7 +2810,6 @@ class: middle, inverse
 
 ### Reading: 
 - LSWR Chapter 6: an overview of graphing in R; great to return to again and again
-- Evans (2020)
 
 ### Optional follow-up
 - Complete R Bootcamp Module 3 (installing and loading a package)
@@ -2820,7 +2819,7 @@ class: middle, inverse
 
 
 ### Assignment:
-- Assignment #1 Due October 14, 11:59pm
+- Assignment #1 Due October 12, 11:59pm
 
 ---
 class: middle, inverse
@@ -2832,9 +2831,9 @@ class: middle, inverse
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
