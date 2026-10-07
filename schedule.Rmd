@@ -96,9 +96,11 @@ Readings:
 Lectures:
 
 - Classes 4-5 (10/8 and 10/13) slides: [html](./slides/EDUC641_4_categrel.html) | [pdf](./slides/EDUC641_4_categrel.pdf)
+
 <!--
 - Class 6 (10/15) slides: [html](./slides/EDUC641_6_history.html) | [pdf](./slides/EDUC641_6_history.pdf)
 - Lab activities: [Week 3 Lab](./labs/Lab3.docx) | [Week 4 Lab](./labs/Lab4.docx) -->
+
 - Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty_codebook.pdf) 
 - R code: [R script](./slides/EDUC641_4_code.R)
 
