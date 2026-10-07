@@ -73,6 +73,7 @@ options(knitr.table.format = "html")
 # Goals of the unit
 
 - Describe relationships between quantitative data that are categorical
+- Quantify the magnitude of a relationship between two dichotomous variables using a risk difference and a risk ratio.
 - Calculate an index of the strength of the relationship between two categorical variables, the chi-squared ( $\chi^2$) statistic
 - Write R scripts to conduct these analyses
 - Formulate and describe the purpose of a null hypothesis
@@ -151,6 +152,32 @@ round(prop.table(table(df$deathpen, df$rvictim), margin=2)*100, 2)
 > In our sample of convicted murderers in Georgia, when a **white person** was a victim...
 
 ---
+## Two ways to say "how different"
+
+.pull-left[
+  .red-pink[**Risk Difference (RD):**] *absolute* comparison
+  $$RD = p_{W\_vic} - p_{B\_vic} = 10.94\% - 1.53\% = 9.4 \text{ pp}$$
+  > Convicted murderers of white victims were sentenced to death at a rate **9.4 percentage points higher** than murderers of Black victims.
+  ]
+
+.pull-right[
+  .red-pink[**Risk Ratio (RR):**] *relative* comparison
+  $$RR = \frac{p_{W\_vic}}{p_{B\_vic}} = \frac{10.94\%}{1.53\%} = 7.2 \text{ times}$$
+  
+  > Murderers of white victims were sentenced to death at **7.2 times** the rate of murderers of Black victims.
+  ]
+
+
+.small[*"Risk" is borrowed from epidemiology: the proportion of a group experiencing an outcome. Here "rate" may be the better word.*]
+  
+--
+
+This is our first introduction to a way of quantifying differences called an .red-pink[**effect size**]. Risk ratios measure the magnitude of the difference on a ***common, comparable scale***.
+
+--
+It says **nothing** about whether one variable ***affects*** (causes) the other! More to come...
+
+---
 # Grouped charts
 We can visualize these counts:
 
@@ -218,7 +245,7 @@ addmargins(two_way)
 
 <br>
 
-.small[*Note*: The proportions above are rounded, so if you use them to calculate the **EXPECTED** values, they will differ slightly from those on the next slide. If you calculate the proportions by hand] (i.e., $1506/2474 = 0.60\overline{84}$), .small[you will get the exact values, and then they will align with the rounded **EXPECTED** values on the next slide.]
+.small[*Note*: The proportions above are rounded, so if you use them to calculate the **EXPECTED** values, they will differ slightly from those on the next slide. If you calculate the proportions by hand] (i.e., $1506/2475 = 0.60\overline{84}$), .small[you will get the exact values, and then they will align with the rounded **EXPECTED** values on the next slide.]
 
 ---
 # Observed vs. Expected
@@ -260,6 +287,7 @@ sum_vict <- df %>% group_by(rvictim) %>% summarise(sum_rvictim = n())
 kable(df3, format='html')
   
 ```
+
 ]
 
 --
@@ -282,6 +310,7 @@ addmargins(two_way)
 ```{r, echo=F}
 kable(df3, format='html')
 ```
+
 ]
 
 <br>
@@ -348,7 +377,7 @@ Decision rule: If $\chi^2$ is big, then declare that there is a relationship bet
 but what is **BIG**, what is **close to zero**, and is 103.8 **big** or **close to zero**?
 
 --
-For that we will use this statistic to conduct a $\chi^2$ .red-pink[**goodness-of-fit**] test.
+For that we will use this statistic to conduct a $\chi^2$ .red-pink[**test of independence**].
 
 ---
 # Statistical inference
@@ -356,7 +385,7 @@ For that we will use this statistic to conduct a $\chi^2$ .red-pink[**goodness-o
 Let's take a step back to capture the nature of the problem
 - We've looked at some data on some convicted murderers in the state of Georgia
 - We're not interested in only *these* murderers, but we're interested in a broader *population* of murderers from which our *sample* was drawn
-  + In fact, even if we could observe outcomes for all murderers in the state of Georgia, our observation of them is imperfect due to *measurement error* and so we only ever observe samples, never populations (more on this later)
+  + In fact, even if we could observe outcomes for all murderers in the state of Georgia, our observation of them is imperfect due to *measurement error* and so we only ever observe samples, never the full .red-pink[**"super population"**] (more on this later)
 - Is there something about sampling from a population that could resolve our problem?
 - Is there some way to generalize our conclusions about our *sample* relationship between *DEATHPEN* and *RVICTIM* to the *underlying population*?
   + This is called .red-pink[**statistical inference**] and it is ***the*** critical contribution of quantitative methods to research
@@ -365,6 +394,12 @@ Let's take a step back to capture the nature of the problem
 # Sampling idiosyncrasy
 
 #### When you generalize from a sample back to its underlying population, you must be careful that your empirical study has not been the victim of *sampling idiosyncrasy*
+
+--
+
+> Take, for example, the case of sampling from a large college class to estimate the average height and (by sheer luck) drawing only the starting 5 players on the basketball team.
+
+--
 
 #### Is the following scenario plausible?
 - There really is no relationship between *DEATHPEN* and *RVICTIM* **in the population**
@@ -376,7 +411,7 @@ Let's take a step back to capture the nature of the problem
 ---
 # The Null Hypothesis $(H_{0})$
 
-.small[We start by imagining a hypothetical world in which there is **no relationship** between *DEATHPEN* and *RVICTIM* in a true population of convicted murderers. Then, we imagine drawing a series of samples of convicted murders over and over again (say...10,000 times) from this hypothetical population. What values of the] $\chi^2$ .small[statistic might we observe?]
+.small[We start by imagining a hypothetical world in which there is **no relationship** between *DEATHPEN* and *RVICTIM* in a true population of convicted murderers. Then, we imagine drawing a series of samples of convicted murderers over and over again (say...10,000 times) from this hypothetical population. What values of the] $\chi^2$ .small[statistic might we observe?]
 
 ```{r, out.width = "70%", echo=F}
   include_graphics("null_pop.jpg")
@@ -428,7 +463,7 @@ ggplot(chsq, aes(Chi_Square)) +
 ---
 # Testing the null (*p*-values)
 
-In fact, we don't need to examine the full histogram. Instead, we can say that in a hypothetical exercise of sampling repeatedly from a null population, less than 1 in a 1,000,000,000,000,000 (trillion) of all accidental values of the $\chi^2$ statistic are larger than a value of 103.8
+In fact, we don't need to examine the full histogram. Instead, we can say that in a hypothetical exercise of sampling repeatedly from a null population, less than 1 in a 1,000,000,000,000,000 (a quadrillion) of all accidental values of the $\chi^2$ statistic are larger than a value of 103.8
 
 ```{r, echo=F, fig.height=4.5}
 ggplot(chsq, aes(Chi_Square)) + 
@@ -439,14 +474,14 @@ ggplot(chsq, aes(Chi_Square)) +
 
 --
 
-The statistic that captures the probability of observing a $\chi^2$ statistic of a magnitude in a particular sample, in the presence of a null population, is called the .red-pink[***p*-value**].
+The statistic that captures the probability of observing a $\chi^2$ statistic at least as large as what we observed, in the presence of a null population, is called the .red-pink[***p*-value**].
 
 
 ---
 # Testing the null (*p*-values)
 
-.blue[*At what p-value would you start to believe that the value of the*] $\color{blue}{\chi^2}$ .blue[*statistic in your own research was "big" (i.e., was unlikely to have occurred by accident)*]
-```{r, echo=F, fig.height=5}
+.blue[*At what p-value would you start to believe that the value of the*] $\color{blue}{\chi^2}$ .blue[*statistic in your own research was "big" (i.e., was unlikely to have occurred by accident)?*]
+```{r, echo=F, fig.height=4.75}
 ggplot(chsq, aes(x=Chi_Square)) + geom_density(fill="pink", alpha=0.2) +
   scale_x_continuous("Chi-Square values", limits = c(0,10)) +
     theme_minimal(base_size = 16)
@@ -455,7 +490,7 @@ ggplot(chsq, aes(x=Chi_Square)) + geom_density(fill="pink", alpha=0.2) +
 ---
 # Testing the null (*p*-values)
 
-.blue[*At what p-value would you start to believe that the value of the*] $\color{blue}{\chi^2}$ .blue[*statistic in your own research was "big" (i.e., was unlikely to have occurred by accident)*]
+.blue[*At what p-value would you start to believe that the value of the*] $\color{blue}{\chi^2}$ .blue[*statistic in your own research was "big" (i.e., was unlikely to have occurred by accident)?*]
 ```{r, echo=F, fig.height=4.75}
 chsq_right <- density(chsq$Chi_Square, from = 3.84, to = max(chsq$Chi_Square))
 chsq_data <- data.frame(x = chsq_right$x, y = chsq_right$y)
@@ -469,13 +504,13 @@ ggplot(chsq, aes(x=Chi_Square)) + geom_density(fill="pink", alpha=0.2) +
 
 --
 
-.small[In social science research, it is customary to (arbitrarily) set that threshold at **5 percent (*p*<0.05)**. In other words, we say that if the difference between our observed data and our expected data would have happened in fewer than 1 out of 20 randomly drawn samples, that the difference reflects a true difference in the population.]
+.small[In social science research, it is customary to set that threshold at **5 percent (*p*<0.05)**. I.e., if there were no relationship *in the population*, such a difference between our observed and expected data would have happened in fewer than 1 out of 20 randomly drawn samples. When that happens, we *reject the null hypothesis* and describe the relationship as *statistically significant*.]
 
 ---
 # Testing the null (*p*-values)
 
-.blue[*In social science research, it is customary to (arbitrarily) set an alpha-threshold and conduct a Null-Hypothesis Significance Test*]
-```{r, echo=F, fig.height=5}
+*In social science research, it is customary to (arbitrarily) set an alpha-threshold and conduct a Null-Hypothesis Significance Test.*
+```{r, echo=F, fig.height=4.75}
 chsq_right <- density(chsq$Chi_Square, from = 3.84, to = max(chsq$Chi_Square))
 chsq_data <- data.frame(x = chsq_right$x, y = chsq_right$y)
 ggplot(chsq, aes(x=Chi_Square)) + geom_density(fill="pink", alpha=0.2) +
@@ -488,7 +523,75 @@ ggplot(chsq, aes(x=Chi_Square)) + geom_density(fill="pink", alpha=0.2) +
 
 --
 
-.blue[**Is this the right thing to do? At the end of the course, we will revisit this concept.**]
+.blue[**Is this the right thing to do?**] **At the end of the course, we will revisit this concept.**
+
+---
+# Evidence vs. magnitude                                                                                                              
+
+.tiny[The test of independence (and associated chi-square statistic and *p*-value) tells us **whether** a difference this large could plausibly be due to sampling idiosyncrasy. It does not tell us **how big** the difference is. Imagine samples of different sizes, each with exactly the same death-sentence rates as ours:]                                
+```{r, echo=F}                                                                                                                                         
+obs <- table(df$deathpen, df$rvictim)                                                                                                                  
+ev_row <- function(k, label) {                                                                                                              m  <- obs * k
+      p  <- m["Yes", ] / colSums(m)
+      x2 <- suppressWarnings(chisq.test(m))
+data.frame(Sample = label, 
+      N      = format(round(sum(m)), big.mark = ","),
+      black  = sprintf("%.1f%%", 100 * p["Black"]),
+      white  = sprintf("%.1f%%", 100 * p["White"]),
+      rd     = sprintf("%.1f pp", 100 * (p["White"] - p["Black"])),
+      rr     = sprintf("%.1f", p["White"] / p["Black"]),
+      chi    = sprintf("%.1f", x2$statistic),
+      pval   = ifelse(x2$p.value < .001, "< 0.001", sprintf("%.3f", x2$p.value)))
+}                                                                                                                                     
+
+ev_tab <- rbind(ev_row(0.03, "Hypothetical smaller sample"),
+                ev_row(1,    "Our sample"), 
+                ev_row(2,    "Hypothetical larger sample"))
+
+kable(ev_tab, format = "html", row.names = FALSE, align = "lccccccc", 
+          col.names = c("", "N", "Black victim", "White victim",
+                    "Risk difference", "Risk ratio", "&chi;<sup>2</sup>", "<i>p</i>"),
+                    escape = FALSE) %>%   
+        add_header_above(c(" " = 2, "Death-sentence rate" = 2, "Magnitude" = 2, "Evidence" = 2)) %>%   
+        row_spec(2, bold = TRUE)                                                                                                 
+```                            
+
+.small[
+- The **magnitude** is identical in every row: murderers of White victims were sentenced to death at a rate 9.4 percentage points higher, or 7.2  times the rate, of murderers of Black victims.
+
+- The **evidence** depends heavily on sample size: the same disparity is "not significant" with 74 cases and overwhelming with 4,950. ]                                                                                                                                                      
+---
+# Evidence vs. magnitude                                                                                                              
+
+.tiny[The test of independence (and associated chi-square statistic and *p*-value) tells us **whether** a difference this large could plausibly be due to sampling idiosyncrasy. It does not tell us **how big** the difference is. Imagine samples of different sizes, each with exactly the same death-sentence rates as ours:]                               
+```{r, echo=F}                                                                                                                                         
+obs <- table(df$deathpen, df$rvictim)                                                                                                                  
+ev_row <- function(k, label) {                                                                                                              m  <- obs * k
+      p  <- m["Yes", ] / colSums(m)
+      x2 <- suppressWarnings(chisq.test(m))
+data.frame(Sample = label, 
+      N      = format(round(sum(m)), big.mark = ","),
+      black  = sprintf("%.1f%%", 100 * p["Black"]),
+      white  = sprintf("%.1f%%", 100 * p["White"]),
+      rd     = sprintf("%.1f pp", 100 * (p["White"] - p["Black"])),
+      rr     = sprintf("%.1f", p["White"] / p["Black"]),
+      chi    = sprintf("%.1f", x2$statistic),
+      pval   = ifelse(x2$p.value < .001, "< 0.001", sprintf("%.3f", x2$p.value)))
+}                                                                                                                                     
+
+ev_tab <- rbind(ev_row(0.03, "Hypothetical smaller sample"),
+                ev_row(1,    "Our sample"), 
+                ev_row(2,    "Hypothetical larger sample"))
+
+kable(ev_tab, format = "html", row.names = FALSE, align = "lccccccc", 
+          col.names = c("", "N", "Black victim", "White victim",
+                    "Risk difference", "Risk ratio", "&chi;<sup>2</sup>", "<i>p</i>"),
+                    escape = FALSE) %>%   
+        add_header_above(c(" " = 2, "Death-sentence rate" = 2, "Magnitude" = 2, "Evidence" = 2)) %>%   
+        row_spec(2, bold = TRUE)                                                                                                      
+```                            
+                                                                                                                                                  
+.tiny[**Report both.** A test statistic tells readers how confident to be that a relationship exists in the population; the risk difference and risk ratio tell them how much it matters. A trivial difference can be "significant" in a huge sample (or one with minimal variance), and an important one can be "non-significant" in a small sample (or one with substantial variance).]
 
 ---
 class: middle, inverse
@@ -529,7 +632,7 @@ of the murderers are sentenced to death.
 
 --
 
-The percentage of Black murderers sentenced to death for killing a white victim is about 32.5 times the percentage of Black murderers sentenced to death for killing a Black victim, in Georgia.
+The percentage of Black murderers sentenced to death for killing a white victim is about 32.5 times (a .red-pink[***Risk Ratio***]) the percentage of Black murderers sentenced to death for killing a Black victim, in Georgia.
 
 --
 
@@ -581,20 +684,20 @@ table(df_w$deathpen, df_w$rvictim)
 .pull-left[
 #### White murderers, Black victims
 When a Black victim is killed by a White murderer,
-$$ \frac{5}{5+179} = 2.71 \% $$
+$$ \frac{5}{5+179} = 2.72 \% $$
 of the murderers are sentenced to death.
 ]
 
 .pull-right[
 #### White murderers, White victims
 When a White victim is killed by a White murderer,
-$$ \frac{56}{56+800} = 6.89 \% $$
+$$ \frac{56}{56+800} = 6.54 \% $$
 of the murderers are sentenced to death.
 ]
 
 --
 
-The percentage of White murderers sentenced to death for killing a White victim is about 2.5 times the percentage of White murderers sentenced to death for killing a Black victim, in Georgia.
+The percentage of white murderers sentenced to death for killing a White victim is about 2.4 times the percentage of white murderers sentenced to death for killing a Black victim. Note that this is only a 4 percentage point difference (a .red-pink[***Risk Difference***]).
 
 ---
 # A statistical test
@@ -645,14 +748,15 @@ chi_w$p.value
 4. Set a threshold at which we will no longer believe that the discrepancy between the observed and expected relationship is due to sampling idiosyncrasy
 5. Estimate the *p*-value
 6. Reject or fail to reject the null hypothesis
-7. Interpret your findings drawing explicitly on plots, summary statistics and test statistics
+7. Quantify the magnitude of the relationship (RD and RR), not just whether one exists
+8. Interpret your findings drawing explicitly on plots, summary statistics and test statistics
 
 ---
-# Our intepretation
+# Our interpretation
 
-> In the population of convicted murderers in Georgia, the imposition of the death penalty and the race of the victim are, on average, related ( $\chi^2$ = 103.8, *p*< 0.001). The percentage of convicted murderers who were sentenced to death after killing a White victim was more than 8 times the percentage of convicted murderers who were sentenced to death after killing a Black victim. In Figure 1, we show... 
+> In the population of convicted murderers in Georgia, the imposition of the death penalty and the race of the victim are, on average, related ( $\chi^2$ = 103.8, *p*< 0.001). The percentage of convicted murderers who were sentenced to death after killing a White victim was about 7 times the percentage of convicted murderers who were sentenced to death after killing a Black victim (9.4 percentage points higher). In Figure 1, we show... 
 
-> This phenomenon is largely driven by the imposition of the death penalty on Black defendants. Courts sentenced Black defendants to death for killing white victims at more than 32 times the frequency than when they were convicted of killing Black defendants ( $\chi^2$ = 414.7, *p*<0.001); whereas, we detect no statistical difference on average between white defendants convicted of murdering white -- compared to Black -- victims ( $\chi^2$ = 3.3, *p*=0.067). In Table 1, we show...
+> This phenomenon is largely driven by the imposition of the death penalty on Black defendants. Those convicted of killing white victims were sentenced to death 44.3% of the time, compared to 1.4% of the time for killing Black victims (*RD* = 42.9 points; *RR* = 32.5). In contrast, we detect no statistical difference on average between white defendants convicted of murdering white -- compared to Black -- victims ( $\chi^2$ = 3.3, *p*=0.067). In Table 1, we show...
 
 ---
 
@@ -673,6 +777,7 @@ class: middle, inverse
 # Goals of the unit
 
 - Describe relationships between quantitative data that are categorical
+- Quantify the magnitude of a relationship between two dichotomous variables using a risk difference and a risk ratio.
 - Calculate an index of the strength of the relationship between two categorical variables, the chi-squared ( $\chi^2$) statistic
 - Write R scripts to conduct these analyses
 - Formulate and describe the purpose of a null hypothesis
@@ -682,12 +787,11 @@ class: middle, inverse
 ---
 # To-Dos
 
-### Reading
+### Reading (prior to Oct. 15 class)
 - LSWR Chapter 11: hypothesis testing
 - LSWR Chapter 12: categorical data analysis (chi-square test focus)
     + Please do not worry about fully understanding the discussions on sampling distributions, degrees of freedom, one- vs. two-sided tests, or variations of chi-squared calculations **(Sections 11.3, 11.4.3, 11.7, 11.8, 12.1.4-12.1.8, 12.3-12.9)**. We will (partially) cover these topics in future classes.
-- Clayton (2020)
-    + Last name A-L: Evans; Last Name M-Z: Clayton
+- Clayton (2020) and Evans (2020)
     + Prep to summarize main ideas and key details
 
 ### Optional follow-up
@@ -695,7 +799,7 @@ class: middle, inverse
 - Complete R Bootcamp Module 7 (lists)
 
 ### Assignments
-- Quiz on Units 1 & 2 on Oct. 17
-- Assignment #2 Due October 25, 11:59pm
+- Quiz on Units 1 & 2 on Oct. 20
+- Assignment #2 Due October 26, 11:59pm
 
 

@@ -90,13 +90,20 @@ chi_b
 chi_b$observed
 
 ## Two-way table of expected frequencies
-round(chi_b$expected, 0) # rounded to an even number
+round(chi_b$expected, 0) # rounded to a whole number
 
-## Display the chi^2 statistic:
+## Display just the chi^2 statistic:
 chi_b$statistic
 
 ## Display the p-value
 chi_b$p.value
 
-# or rounded to 10-significant digits...
+# or rounded to 10 decimal places...
 round(chi_b$p.value, 10)
+
+## Can ask R to give you the numbers needed to calculate risk difference (RD) and risk ratio (RR)
+prop.test(table(df$deathpen, df$rvictim))
+    
+#     subtract prop 2 from prop 1 to get the RD
+#     divide prop 1 by prop 2 to get the RR
+    
