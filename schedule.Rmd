@@ -70,7 +70,7 @@ Lectures:
 
 Assignment 1: 
 
-- Due: October 12, 11:59pm
+- Due: October 16, 4:59pm
 - [html file](./assignments/assignment01.html)
 - [cat.csv dataset](./data/cat.csv)
 
