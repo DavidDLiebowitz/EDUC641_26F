@@ -1,6 +1,6 @@
 ---
 title: "EDUC 641 Assignment 2"
-subtitle: "(Relationships between categorical variables and the Chi-squared goodness-of-fit test)"
+subtitle: "(Relationships between categorical variables and the Chi-squared test of independence)"
 output: html_document
 ---
 ```{R, setup, include = FALSE}
@@ -59,13 +59,13 @@ Open your RStudio, create a project and save it. Go to the root directory of the
 
 2.1. How many students in the treatment group were chronically absent and not chronically absent, respectively? How many students in the control group were chronically absent/not chronically absent? Write a 1-2 sentence response and create a 2x2 contingency table (frequencies in cell) to demonstrate your answer. **(1 points)**
 
-2.2. What *percent* of students in the treatment group were chronically absent and not chronically absent, respectively? How about in the control group? Write a 1-2 sentence response and create a 2x2 table (percentages in cell) to demonstrate your answer. **(1 points)**
+2.2. What *percent* of students in the treatment group were chronically absent and not chronically absent, respectively? How about in the control group? What is the *risk difference* between the two groups? Write a 1-2 sentence response and create a 2x2 table (percentages in cell) to demonstrate your answer. **(1 points)**
 
 2.3. Create one figure to visualize the numbers of chronically absent/not chronically absent students in the treatment and control groups. Make sure to label the x- and y-axes. **(2 points)**
 
 2.4. Based on your observations from 2.1 to 2.3, do you think there is a relationship between *absenteeism* and *treat*? Why or why not? **(1 point)**
 
-#### 3. Chi-squared goodness-of-fit test of categorical association 
+#### 3. Chi-squared test of independence of categorical association 
 
 3.1. Our first research question of interest is whether teacher participation in professional development decreased rates of student chronic absenteeism. State your null hypothesis for this research question. **(2 point)**
 
@@ -73,10 +73,10 @@ Open your RStudio, create a project and save it. Go to the root directory of the
 
 3.3. Calculate the Chi-squared statistic **by hand** using the tables you generated in 2.1 and 3.2. In one sentence, state what this Chi-squared statistic represents. **(2 points)**
 
-3.4. Perform a Chi-squared goodness-of-fit test in R to examine the relationship between *absenteeism* and *treat*. Write 3-4 sentences to interpret your results and answer the research question: Were students less likely to be chronically absent if their teachers participated the consultancy PD intervention? **(2 points)**
+3.4. Perform a Chi-squared test of independence in R to examine the relationship between *absenteeism* and *treat*. Write 3-4 sentences to interpret your results (including the magnitude of any relationship you detect) and answer the research question: Were students less likely to be chronically absent if their teachers participated the consultancy PD intervention? **(2 points)**
 
 #### 4. Sub-sample comparisons
 
-4.1. We are also interested in whether *absenteeism* and *treat* are related for female students. Perform a Chi-squared goodness-of-fit test in R to investigate the relationship between *absenteeism* and *treat* for female students. Write 2-3 sentences to state your null hypothesis, interpret your results, and answer the research question: Were female students less likely to be chronically absent if their teachers participated in the consultancy PD intervention? **(1 point)**
+4.1. We are also interested in whether *absenteeism* and *treat* are related for female students. Perform a Chi-squared test of independence in R to investigate the relationship between *absenteeism* and *treat* for female students. Write 2-3 sentences to state your null hypothesis, interpret your results, and answer the research question: Were female students less likely to be chronically absent if their teachers participated in the consultancy PD intervention? **(1 point)**
 
 4.2. Do the same for male students. **(1 point)**
