@@ -34,7 +34,7 @@ class: center, middle, inverse, title-slide
 
 # Roadmap
 
-&lt;img src="Roadmap_3.png" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;img src="Roadmap_3.png" alt="" width="90%" style="display: block; margin: auto;" /&gt;
 
 ---
 # Class goals
@@ -79,7 +79,7 @@ Before making comparisons between social/economic conditions, we want to start w
 # Read in life expectancy
 
 
-```r
+``` r
 who &lt;- read.csv(here("data/life_expectancy.csv")) %&gt;%
   
   # going to do some data cleaning; 
@@ -133,7 +133,7 @@ There are many ways to describe the characteristics of a .red-pink[**distributio
 
 .small[A distribution describes the number of observations of a variable that assume a particular value.]
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-4-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 ## Visualizing distributions: Histogram
@@ -142,11 +142,11 @@ There are many ways to describe the characteristics of a .red-pink[**distributio
 + R automatically creates a sensible bin size, but you can specify number of bins/bin width
 
 
-```r
+``` r
 hist(who$life_expectancy)
 ```
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-5-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 
 --
@@ -160,11 +160,11 @@ hist(who$life_expectancy)
 + R automatically creates a sensible bin size, but you can specify number of bins/bin width
 
 
-```r
+``` r
 hist(who$life_expectancy, breaks = 16)
 ```
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-6-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -177,11 +177,11 @@ hist(who$life_expectancy, breaks = 16)
 + R automatically creates a sensible bin size, but you can specify number of bins/bin width
 
 
-```r
+``` r
 ggplot(who, aes(life_expectancy)) + geom_histogram()
 ```
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-7-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -196,12 +196,12 @@ ggplot(who, aes(life_expectancy)) + geom_histogram()
 
 .pull-left[
 **Histogram**
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-8-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
 **Bar plot**
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-9-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ]
 
 .blue[*What is the difference between the two plots?*]
@@ -215,7 +215,7 @@ ggplot(who, aes(life_expectancy)) + geom_histogram()
 
 ---
 
-```r
+``` r
 stem(who$life_expectancy)
 ```
 
@@ -252,14 +252,14 @@ stem(who$life_expectancy)
 - Values reflect the distribution's probability density function (not essential to understand their calculation)
   
 
-```r
+``` r
 ggplot(who, aes(life_expectancy)) +
   geom_density()
 ```
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-11-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
-* Any point on the curve records the probability that you would observe that value of the variable by randomly drawing one observation from your sample
+* The area under the curve at any given point records the probability that you would observe that value of the variable by randomly drawing one observation from your sample
 
 ---
 class: middle, inverse
@@ -281,7 +281,7 @@ Writing this out can be a little tedious. Since our datasets can often have hund
 
 Summation (or sigma) notation is used to provide a concise expression for the sum of observations.
 
-`$$\sum_{i=i}^{n} x_{i}$$`
+`$$\sum_{i=1}^{n} x_{i}$$`
 * i = index of summation (the unit that the observations are in; e.g., schools, students, numbers)
 * n = stopping point (number of observations)
 * `\(x_i\)` = summation element (what we are summing)
@@ -289,7 +289,7 @@ Summation (or sigma) notation is used to provide a concise expression for the su
 Our mean formula rewritten using summation notation:
 
 
-`$$\bar{X} = \frac{1}{n}{\sum_{i=i}^{n} X_{i}}$$`
+`$$\bar{X} = \frac{1}{n}{\sum_{i=1}^{n} X_{i}}$$`
 --
 
 We use the bar on the X `\((\bar{X})\)` to indicate that we are calculating the mean value of the variable.
@@ -339,7 +339,7 @@ While this isn't critical to understand right now, the reason we index the summa
 * Here, having Mars and Venus in this sample of countries substantially shifts our mean away from the "peak" of the distribution and from the mean of the distribution when excluding these two outliers.
 ]
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-12-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 # Median
@@ -360,14 +360,14 @@ While this isn't critical to understand right now, the reason we index the summa
 # Median
 * Unlike the mean, the median is less affected by outliers.
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-13-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 ### With apologies for reifying gender stereotypes:
 
 --
 
-&lt;img src="outliers.png" width="490" height="530px" style="display: block; margin: auto;" /&gt;
+&lt;img src="outliers.png" alt="" width="490" height="530px" style="display: block; margin: auto;" /&gt;
 
 ---
 # Mode
@@ -398,7 +398,7 @@ In general, the mode--as a single statistic--is rarely used and is particularly 
 # Implementing in R
 
 
-```r
+``` r
 mean(who$life_expectancy, na.rm = T)
 ```
 
@@ -406,7 +406,7 @@ mean(who$life_expectancy, na.rm = T)
 ## [1] 71.63934
 ```
 
-```r
+``` r
 ## If there are missing values of life_expectancy (NA), we will get
 ## an error. So, we generally want to set na.rm = T which tells R 
 ## to ignore missing values. (By default na.rm = F)
@@ -419,7 +419,7 @@ sum(is.na(who$life_expectancy))
 ## [1] 0
 ```
 
-```r
+``` r
 median(who$life_expectancy)
 ```
 
@@ -438,10 +438,10 @@ These distributions have the same central tendency (mean = 100).
 
 .blue[How are they different?]
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-16-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 --
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-17-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -483,12 +483,12 @@ class: middle, inverse
 
 * .red-pink[**IQR**] summarizes the range of the most commonly observed values in the dataset.
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-18-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-18-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ---
 # Implementing in R
 
 
-```r
+``` r
 range(who$life_expectancy)
 ```
 
@@ -496,7 +496,7 @@ range(who$life_expectancy)
 ## [1] 51 88
 ```
 
-```r
+``` r
 IQR(who$life_expectancy)
 ```
 
@@ -504,7 +504,7 @@ IQR(who$life_expectancy)
 ## [1] 11
 ```
 
-```r
+``` r
 quantile(who$life_expectancy)
 ```
 
@@ -513,7 +513,7 @@ quantile(who$life_expectancy)
 ##   51   66   74   77   88
 ```
 
-```r
+``` r
 # By default will give quartiles (25 percentiles)
 # Can change with 'probs' sub-command
 # e.g, quantile(who$life_expectancy, probs = seq(0,1,0.1))
@@ -539,21 +539,21 @@ Let's unpack what this equation does...
 # Variance
 Here are some national life expectancies centered around the mean. Their value represents their difference relative to the sample mean.
   
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-20-1.png" alt="" style="display: block; margin: auto;" /&gt;
 Some observations fall below the mean so their deviation is a negative value. If we took the average of our positive and negative deviations, we'd just get zero!
 
 ---
 # Variance
 Since any number squared is positive, let's try squaring our deviations.
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-21-1.png" alt="" style="display: block; margin: auto;" /&gt;
 Now we can take the average of our squared deviations and get a non-zero value!
 ---
 # Variance
 
 Our variance (or average squared deviation) is approximately 66.43.
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-22-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-22-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 By itself, a variance of 66.43 is not very meaningful to us. It does not reflect the raw units of our original scale (it is in squared years...what does that mean???).
 ---
@@ -572,7 +572,7 @@ The standard deviation of life expectancy across countries in 2015 was approxima
 
 Here is our original plot with our standard deviation (*SD*) plotted below and above the mean (i.e., -1 *SD*, +1 *SD*).
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-23-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 The standard deviation of life expectancy in 2015 was approximately 8.15 *years*.
 
@@ -580,7 +580,7 @@ The standard deviation of life expectancy in 2015 was approximately 8.15 *years*
 # Implementing in R
 
 
-```r
+``` r
 # Variance
 var(who$life_expectancy)
 ```
@@ -589,7 +589,7 @@ var(who$life_expectancy)
 ## [1] 66.42965
 ```
 
-```r
+``` r
 # Standard deviation
 sd(who$life_expectancy)
 ```
@@ -661,7 +661,7 @@ Population Statistics - Greek Alphabet
 * Not all distributions in the real world are symmetrical. Often they have asymmetry or .red-pink[**skewness**].
 * Skewness describes how much a distribution is "bunched up" to the right or left.
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-25-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-25-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 * .red-pink[**Positive Skew**] - Distribution is skewed to the right with a "positive-pointing finger."
 * .red-pink[**Negative Skew**] - Distribution is skewed to the left with a "negative-pointing finger."
@@ -674,7 +674,7 @@ Population Statistics - Greek Alphabet
  + .red-pink[Platykurtic] distributions do not have a prominent peak and have a flatter top.
  
  
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-26-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ---
 # Moments of a distribution
 Each of these statistics we've covered describe a different .red-pink["moment of a distribution."]
@@ -711,7 +711,7 @@ Note: In this course we will focus visual analysis for severe skew or kurtosis. 
 * Here is a density plot of the WHO life expectancy data for 2015. 
 * How would you characterize the distribution?
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-27-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-27-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 * .blue[What kind of skew does this distribution have?]
 
@@ -724,7 +724,7 @@ Note: In this course we will focus visual analysis for severe skew or kurtosis. 
 # Summarizing data
 
 The distribution of life expectancy has a slightly negative skew and no excess kurtosis. The skewness and kurtosis do not appear to be severe.
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-28-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-28-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 
 The .red[mean] national life expectancy in 2015 was **71.62** years.
@@ -745,7 +745,7 @@ Although histograms and density plots are useful for evaluating the shape of a d
 
 Here is a sample boxplot of our WHO data overlain on a density plot.
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-29-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-29-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 # Boxplots
@@ -753,11 +753,11 @@ Here is a sample boxplot of our WHO data overlain on a density plot.
 A basic boxplot can quickly capture the median, the interquartile range and any outlying values (we don't have any of these in our data).
 
 
-```r
+``` r
 boxplot(who$life_expectancy, horizontal=T)
 ```
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-30-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-30-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 # Boxplots
@@ -767,14 +767,14 @@ However, we frequently visualize distributions across several groups for compari
 
 
 
-```r
+``` r
 ggplot(data = who_more, aes(factor(year), life_expectancy, 
                             fill = factor(year))) +
         geom_boxplot() +
         theme_minimal() + theme(legend.position = "none")
 ```
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-32-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-32-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 
 --
@@ -821,10 +821,10 @@ class: middle, inverse
 - Complete Module 10 (data management) in R Bootcamp
 
 ### Quiz
-- Covering Unit 3 on Oct. 31
+- Covering Unit 3 on Oct. 29
 
 ### Assignments
-- Assignment #3 due November 7, 11:59pm
+- Assignment #3 due November 16, 11:59pm
 
 --
 
@@ -833,9 +833,9 @@ class: middle, inverse
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

@@ -280,7 +280,7 @@ ggplot(who, aes(life_expectancy)) +
 
 ```
 
-* Any point on the curve records the probability that you would observe that value of the variable by randomly drawing one observation from your sample
+* The area under the curve at any given point records the probability that you would observe that value of the variable by randomly drawing one observation from your sample
 
 ---
 class: middle, inverse
@@ -302,7 +302,7 @@ Writing this out can be a little tedious. Since our datasets can often have hund
 
 Summation (or sigma) notation is used to provide a concise expression for the sum of observations.
 
-$$\sum_{i=i}^{n} x_{i}$$
+$$\sum_{i=1}^{n} x_{i}$$
 * i = index of summation (the unit that the observations are in; e.g., schools, students, numbers)
 * n = stopping point (number of observations)
 * $x_i$ = summation element (what we are summing)
@@ -310,7 +310,7 @@ $$\sum_{i=i}^{n} x_{i}$$
 Our mean formula rewritten using summation notation:
 
 
-$$\bar{X} = \frac{1}{n}{\sum_{i=i}^{n} X_{i}}$$
+$$\bar{X} = \frac{1}{n}{\sum_{i=1}^{n} X_{i}}$$
 --
 
 We use the bar on the X $(\bar{X})$ to indicate that we are calculating the mean value of the variable.
@@ -979,8 +979,8 @@ p +
   line_label(xint = 74, clr = "black", yint = .1, lbl = "Median") +
   line_label(xint = 66, clr = "blue", yint = .085, lbl = "Q1") +
   line_label(xint = 77, clr = "blue", yint = .085, lbl = "Q3") +
-  line_label(xint = 51, clr = "forestgreen", yint = .07, lbl = "Q1 - 1.5*IQR") +
-  line_label(xint = 88, clr = "forestgreen", yint = .07, lbl = "Q3 + 1.5*IQR") +
+  line_label(xint = 49.5, clr = "forestgreen", yint = .07, lbl = "Q1 - 1.5*IQR") +
+  line_label(xint = 93.5, clr = "forestgreen", yint = .07, lbl = "Q3 + 1.5*IQR") +
   theme_minimal()
 
 ggsave("box_density.jpg")
@@ -1062,10 +1062,10 @@ class: middle, inverse
 - Complete Module 10 (data management) in R Bootcamp
 
 ### Quiz
-- Covering Unit 3 on Oct. 31
+- Covering Unit 3 on Oct. 29
 
 ### Assignments
-- Assignment #3 due November 7, 11:59pm
+- Assignment #3 due November 16, 11:59pm
 
 --
 
