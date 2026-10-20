@@ -131,7 +131,7 @@ who$life_expectancy_zscore <-
   (who$life_expectancy - mean(who$life_expectancy)) /
   sd(who$life_expectancy)
 
-# Can do the same thing using the `dplyr` verb `mutate`
+# Can do the same thing using the `dplyr` verb `mutate` (`dplyr` is part of the tidyverse suite of packages)
 
 who <- who %>% mutate(life_expectancy_zscore = 
                         (life_expectancy - mean(life_expectancy)) / 

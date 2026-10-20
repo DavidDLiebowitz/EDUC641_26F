@@ -258,7 +258,7 @@ ggplot(who, aes(life_expectancy)) +
 
 
 ---
-### Visualizing distributions: Stem-and-leaf
+## Visualizing distributions: Stem-and-leaf
 
 - The "leaf" represents the last digit of a number (typically the 1s place, unless data need to be rounded to the nearest ten)
 - The "stem" contains all other digits of number and serves as a grouping category for observations
@@ -979,8 +979,8 @@ p +
   line_label(xint = 74, clr = "black", yint = .1, lbl = "Median") +
   line_label(xint = 66, clr = "blue", yint = .085, lbl = "Q1") +
   line_label(xint = 77, clr = "blue", yint = .085, lbl = "Q3") +
-  line_label(xint = 49.5, clr = "forestgreen", yint = .07, lbl = "Q1 - 1.5*IQR") +
-  line_label(xint = 93.5, clr = "forestgreen", yint = .07, lbl = "Q3 + 1.5*IQR") +
+  line_label(xint = 51, clr = "forestgreen", yint = .07, lbl = "Q1 - 1.5*IQR") +
+  line_label(xint = 88, clr = "forestgreen", yint = .07, lbl = "Q3 + 1.5*IQR") +
   theme_minimal()
 
 ggsave("box_density.jpg")
@@ -1062,9 +1062,10 @@ class: middle, inverse
 - Complete Module 10 (data management) in R Bootcamp
 
 ### Quiz
-- Covering Unit 3 on Oct. 29
+- Covering Unit 3 on Oct. 30
 
 ### Assignments
+- Assignment #2 due October 26, 11:59pm
 - Assignment #3 due November 16, 11:59pm
 
 --
