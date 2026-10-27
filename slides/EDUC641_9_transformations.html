@@ -34,7 +34,7 @@ class: center, middle, inverse, title-slide
 
 # Roadmap
 
-&lt;img src="Roadmap_3.png" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;img src="Roadmap_3.png" alt="" width="90%" style="display: block; margin: auto;" /&gt;
 
 ---
 # Class goals
@@ -62,14 +62,14 @@ The standard deviation (s) represents the positive square root of the .red-pink[
 2. Square each resulting difference
 3. Add up all of the squared deviations
 4. Divide by the total number of observations
-5. Take the square root `\(\rightarrow\)` standard deviation
+5. Take the positive square root `\(\rightarrow\)` standard deviation
 
 ---
 # A common metric
 * .small[A distribution can have any mean and any (positive) standard deviation.]
 
 
-&lt;img src="EDUC641_9_transformations_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_9_transformations_files/figure-html/unnamed-chunk-3-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -77,7 +77,7 @@ The standard deviation (s) represents the positive square root of the .red-pink[
 
 --
 
-&lt;img src="EDUC641_9_transformations_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_9_transformations_files/figure-html/unnamed-chunk-4-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 # `\(Z\)`-transformations
@@ -85,7 +85,7 @@ The standard deviation (s) represents the positive square root of the .red-pink[
 * A z-transformation re-scales the distribution to a mean `\((\mu)\)` of 0 and a standard deviation `\((\sigma)\)` of 1.
 
 
-&lt;img src="EDUC641_9_transformations_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_9_transformations_files/figure-html/unnamed-chunk-5-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 # `\(Z\)`-transformations
@@ -109,11 +109,11 @@ The standard deviation (s) represents the positive square root of the .red-pink[
 # Transformed distributions
 
 Here is a histogram of our life expectancy data.
-&lt;img src="EDUC641_9_transformations_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_9_transformations_files/figure-html/unnamed-chunk-6-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 We are going to create a new variable called `life_expectancy_zscore` using the formula described on the previous slide.
 
-```r
+``` r
 who$life_expectancy_zscore &lt;- 
   (who$life_expectancy - mean(who$life_expectancy)) /
         sd(who$life_expectancy)
@@ -122,12 +122,12 @@ who$life_expectancy_zscore &lt;-
 ---
 # The new distribution
 
-```r
+``` r
 ## Histogram of the new z-scores
 hist(who$life_expectancy_zscore)
 ```
 
-&lt;img src="EDUC641_9_transformations_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_9_transformations_files/figure-html/unnamed-chunk-8-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 We now have a mean of 0 and standard deviation of 1.
 
@@ -135,9 +135,9 @@ We now have a mean of 0 and standard deviation of 1.
 ---
 # "Transforming" vs. "normalizing"
 
-An important note about standardizing a distribution is that it changes the mean and standard deviation, but **does not change the overall shape.**
+An important note about standardizing a distribution is that it changes the mean and magnitude of the standard deviation, but **does not change the overall shape.**
 
-&lt;img src="EDUC641_9_transformations_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_9_transformations_files/figure-html/unnamed-chunk-9-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -153,7 +153,7 @@ We started with the hope that "transforming" (or "standardizing") a distribution
 Let's say we are interested in the life expectancy in a particular country and how this compares to both the average life expectancy and the distribution of life expectancies. For convenience, say Canada:
 
 
-```r
+``` r
 mean(subset(who$life_expectancy, 
             who$region == "Canada"))
 ```
@@ -162,7 +162,7 @@ mean(subset(who$life_expectancy,
 ## [1] 82
 ```
 
-```r
+``` r
 mean(who$life_expectancy)
 ```
 
@@ -184,7 +184,7 @@ And how different is Canada from the life-expectancy sample mean as compared to 
 
 Life expectancy:
 
-```r
+``` r
 mean(subset(who$life_expectancy, 
             who$region == "Canada"))
 ```
@@ -193,7 +193,7 @@ mean(subset(who$life_expectancy,
 ## [1] 82
 ```
 
-```r
+``` r
 mean(who$life_expectancy)
 ```
 
@@ -227,7 +227,7 @@ Average schooling:
 Now let's compare `\(z\)`-scores
 
 
-```r
+``` r
 mean(subset(who$life_expectancy_zscore, 
             who$region == "Canada"))
 ```
@@ -239,7 +239,7 @@ mean(subset(who$life_expectancy_zscore,
 
 
 
-```r
+``` r
 mean(subset(who$schooling_zscore, 
             who$region == "Canada"))
 ```
@@ -255,7 +255,7 @@ mean(subset(who$schooling_zscore,
 ---
 # Comparing on common metric
 
-&lt;img src="EDUC641_9_transformations_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_9_transformations_files/figure-html/unnamed-chunk-17-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 # Outliers
@@ -263,7 +263,7 @@ mean(subset(who$schooling_zscore,
 .small[Compare the raw life expectancy to the standardized ones to get a better sense of outlying values:]
 
 
-```r
+``` r
 mean(who$life_expectancy, na.rm=T)
 ```
 
@@ -271,7 +271,7 @@ mean(who$life_expectancy, na.rm=T)
 ## [1] 71.63934
 ```
 
-```r
+``` r
 head(sort(who$life_expectancy))
 ```
 
@@ -279,7 +279,7 @@ head(sort(who$life_expectancy))
 ## [1] 51 52 52 53 53 54
 ```
 
-```r
+``` r
 tail(sort(who$life_expectancy))
 ```
 
@@ -298,7 +298,7 @@ tail(sort(who$life_expectancy))
 # Outliers
 .small[Compare the raw life expectancy to the standardized ones to get a better sense of outlying values:]
 
-```r
+``` r
 head(sort(who$life_expectancy_zscore))
 ```
 
@@ -306,7 +306,7 @@ head(sort(who$life_expectancy_zscore))
 ## [1] -2.532299 -2.409606 -2.409606 -2.286913 -2.286913 -2.164220
 ```
 
-```r
+``` r
 tail(sort(who$life_expectancy_zscore))
 ```
 
@@ -327,7 +327,7 @@ Careful&lt;sup&gt;1&lt;/sup&gt; standardization of continuous variables will per
 
 .footnote[[1] "Careful" because the distribution within which you standardize the variable has important implications for the transformation and the resulting analysis you will do. 
 
-[2] *Further thoughts for those interested*: the .red-pink[**correlation coefficient**] is a standardized effect size which can be used communicate the strength of a relationship. We will examine the correlation coefficient and the related concept of .red-pink[**effect size**] further in EDUC 643 this winter.]
+[2] *Further thoughts for those interested*: the .red-pink[**correlation coefficient**] is a standardized effect size which can be used to communicate the strength of a relationship. We will examine the correlation coefficient and the related concept of .red-pink[**effect size**] further in EDUC 643 this winter.]
 
 
 ---
@@ -335,21 +335,22 @@ class: middle, inverse
 
 # Mid-term SES results
 
-### Response rate: 41 percent (15/37)
+### Response rate: 56 percent (14/25)
 
 --
 
-### ...ugggh I can do better to offer reminders!
+### ...ugggh...I can offer more reminders next time!
 
 ---
 # Quantitative results
 
 .pull-left[
 **Generally positive:**
-(&gt;=80% rate as beneficial)
+(&gt;=79% rate as beneficial)
 * Inclusivity
 * Support from instructors
 * Active learning
+* Communication
 * Organization
 * Relevance of content
 * Assignments/projects
@@ -358,10 +359,9 @@ class: middle, inverse
 
 .pull-right[
 **Generally insufficient:**
-(&lt;80% rate as beneficial)
+(&lt;79% rate as beneficial)
 * Feedback provided
 * Clarity of assignment instructions/grading
-* Instructor communication
 ]
 
 --
@@ -374,8 +374,8 @@ There are diverging opinions within each of these categories, and so important t
 .pull-left[
 **Helpful:**
 .small[
-* Group work and encouraging discussion
-* Very well organized and high quality materials (lectures, website, datasets)
+* Encouraging discussion
+* Very well organized and high quality materials (lectures, website, code examples, datasets)
 * Explanation of concepts (incl. scaffolding)
 * Readings and class website
 ]
@@ -384,7 +384,8 @@ There are diverging opinions within each of these categories, and so important t
 .pull-right[
 **Need improvement/suggestions:**
 .small[
-* Lack of clarity in expectations and grading of assignments
+* Responses to class questions unclear
+* More interactive class
 * More focus on learning R/coding
 * Too basic/easy
 * Too difficult
@@ -394,7 +395,7 @@ There are diverging opinions within each of these categories, and so important t
 
 --
 
-Will reflect on feedback, particularly as it relates to clarity in grading, expectations and communication generally. 
+Will reflect on feedback, particularly as it relates to clarity in grading and expectations. 
 
 
 --
@@ -421,18 +422,18 @@ class: middle, inverse
 - LSWR Chapter 5
 
 ### Quiz 3
-- Opens 3:45pm on Oct. 31, closes at 5pm on Nov. 1
+- Opens 3:45pm on Oct. 29, closes at 5pm on Oct. 30
 
 ### Assignments
-- Assignment #3 due November 7, 11:59pm
+- Assignment #3 due November 16, 11:59pm
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

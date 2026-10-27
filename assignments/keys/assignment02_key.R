@@ -2,7 +2,7 @@
 # EDUC 641 Assignment 2 Key 
 ## David Liebowitz, Claire Zhang, Havisha Khurana
 ### First created: 8/1/21
-### Last update: 10/29/24
+### Last update: 10/27/26
 ### Inputs: cat.csv
 ### Purpose: load in data, understand structure, prepare descriptive tables and figures
 ##########################################################################################
@@ -34,6 +34,9 @@ table(pd$absenteeism, pd$treat)
 
 # 2.2 What percent of students in each group?
 round(prop.table(table(pd$absenteeism, pd$treat), margin=2)*100, 2)
+
+# Calculate risk difference
+prop.test(table(pd$treat, pd$absenteeism))
 
 # 2.3 Figure of numbers in each group
 ggplot(pd, aes(x = treat, fill = absenteeism)) +
@@ -71,7 +74,7 @@ rownames(margin) <- c("No", "Yes")
 colnames(margin) <- c("Control", "Treatment")
 as.table(margin)
 
-# 3.3 and 3.4 Chi-square statistic and goodness-of-fit test
+# 3.3 and 3.4 Chi-square statistic and test of independence
 chisq.test(pd$absenteeism, pd$treat)
 
 # Can do this without the Yates continuity and get the same value as in 3.3
@@ -87,8 +90,12 @@ pd_female <- pd %>%
 
 chisq.test(pd_female$absenteeism, pd_female$treat)
 
+prop.test(table(pd_female$treat, pd_female$absenteeism))
+
 # 4.2 Male students
 pd_male <- pd %>% 
   filter(cgender == "Male")
+
+prop.test(table(pd_male$treat, pd_male$absenteeism))
 
 chisq.test(pd_male$absenteeism, pd_male$treat)

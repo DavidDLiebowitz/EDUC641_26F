@@ -80,7 +80,7 @@ $$s = \sqrt{\frac{\Sigma_{i=1}^n(x_i-\bar{x})^2}{N}}$$
 2. Square each resulting difference
 3. Add up all of the squared deviations
 4. Divide by the total number of observations
-5. Take the square root $\rightarrow$ standard deviation
+5. Take the positive square root $\rightarrow$ standard deviation
 
 ---
 # A common metric
@@ -191,7 +191,7 @@ We now have a mean of 0 and standard deviation of 1.
 ---
 # "Transforming" vs. "normalizing"
 
-An important note about standardizing a distribution is that it changes the mean and standard deviation, but **does not change the overall shape.**
+An important note about standardizing a distribution is that it changes the mean and magnitude of the standard deviation, but **does not change the overall shape.**
 
 ```{r, echo = F}
 who_raw <- ggplot(who, aes(life_expectancy)) +
@@ -349,7 +349,7 @@ Careful<sup>1</sup> standardization of continuous variables will permit:
 
 .footnote[[1] "Careful" because the distribution within which you standardize the variable has important implications for the transformation and the resulting analysis you will do. 
 
-[2] *Further thoughts for those interested*: the .red-pink[**correlation coefficient**] is a standardized effect size which can be used communicate the strength of a relationship. We will examine the correlation coefficient and the related concept of .red-pink[**effect size**] further in EDUC 643 this winter.]
+[2] *Further thoughts for those interested*: the .red-pink[**correlation coefficient**] is a standardized effect size which can be used to communicate the strength of a relationship. We will examine the correlation coefficient and the related concept of .red-pink[**effect size**] further in EDUC 643 this winter.]
 
 
 ---
@@ -357,21 +357,22 @@ class: middle, inverse
 
 # Mid-term SES results
 
-### Response rate: 41 percent (15/37)
+### Response rate: 56 percent (14/25)
 
 --
 
-### ...ugggh I can do better to offer reminders!
+### ...ugggh...I can offer more reminders next time!
 
 ---
 # Quantitative results
 
 .pull-left[
 **Generally positive:**
-(>=80% rate as beneficial)
+(>=79% rate as beneficial)
 * Inclusivity
 * Support from instructors
 * Active learning
+* Communication
 * Organization
 * Relevance of content
 * Assignments/projects
@@ -380,10 +381,9 @@ class: middle, inverse
 
 .pull-right[
 **Generally insufficient:**
-(<80% rate as beneficial)
+(<79% rate as beneficial)
 * Feedback provided
 * Clarity of assignment instructions/grading
-* Instructor communication
 ]
 
 --
@@ -396,8 +396,8 @@ There are diverging opinions within each of these categories, and so important t
 .pull-left[
 **Helpful:**
 .small[
-* Group work and encouraging discussion
-* Very well organized and high quality materials (lectures, website, datasets)
+* Encouraging discussion
+* Very well organized and high quality materials (lectures, website, code examples, datasets)
 * Explanation of concepts (incl. scaffolding)
 * Readings and class website
 ]
@@ -406,7 +406,8 @@ There are diverging opinions within each of these categories, and so important t
 .pull-right[
 **Need improvement/suggestions:**
 .small[
-* Lack of clarity in expectations and grading of assignments
+* Responses to class questions unclear
+* More interactive class
 * More focus on learning R/coding
 * Too basic/easy
 * Too difficult
@@ -416,7 +417,7 @@ There are diverging opinions within each of these categories, and so important t
 
 --
 
-Will reflect on feedback, particularly as it relates to clarity in grading, expectations and communication generally. 
+Will reflect on feedback, particularly as it relates to clarity in grading and expectations. 
 
 
 --
@@ -443,8 +444,8 @@ class: middle, inverse
 - LSWR Chapter 5
 
 ### Quiz 3
-- Opens 3:45pm on Oct. 31, closes at 5pm on Nov. 1
+- Opens 3:45pm on Oct. 29, closes at 5pm on Oct. 30
 
 ### Assignments
-- Assignment #3 due November 7, 11:59pm
+- Assignment #3 due November 16, 11:59pm
 
