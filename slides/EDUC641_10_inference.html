@@ -34,7 +34,7 @@ class: center, middle, inverse, title-slide
 
 # Roadmap
 
-&lt;img src="Roadmap_3.png" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;img src="Roadmap_3.png" alt="" width="90%" style="display: block; margin: auto;" /&gt;
 ---
 # Class goals
 
@@ -72,10 +72,10 @@ class: middle, inverse
 You have likely heard of a frequent phenomenon that occurs when we quantify observations about the social and natural worlds: most observations tend to cluster in the middle, with others drifting out into narrower tails. You may have heard these described as "bell curves."
 
 .pull-left[
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-3-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ]
 .pull-right[
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-4-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -85,7 +85,7 @@ The normal distribution is a mathematical function that is a particularly specif
 * Standard Deviation `\((\sigma)\)`
 
 It is defined by the following probability density function: 
-$$ p(X|\mu, \sigma) = \frac{1}{\sqrt{2\pi\sigma}}exp[-\frac{(X-\mu)^2}{2\sigma^2}] $$
+$$ p(X|\mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}}exp[-\frac{(X-\mu)^2}{2\sigma^2}] $$
 `$$X\sim N(\mu,\sigma)$$`
 .purple[*Don't need to know this formula!*]
 
@@ -109,7 +109,7 @@ Central Tendency:
 Variability:
 + 68% of observations are within 1 SD
 + 95% of  observations are within 2 SDs
-+ 99% of observations are within 3 SDs
++ 99.7% of observations are within 3 SDs
 
 Shape: 
 + Unimodal
@@ -127,7 +127,7 @@ More characteristics of the normal distribution:
 
 * We can always infer the percentage of observations in any part of a normal distribution.
 
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-5-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 # Empirical Rule
@@ -140,7 +140,7 @@ A randomly selected observation has an approximately...
 ]
 
 .pull-right[
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-6-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ]
  
 ---
@@ -157,7 +157,7 @@ A randomly selected observation has an approximately...
 ]
 
 .pull-right[
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-7-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -176,14 +176,14 @@ A randomly selected observation has an approximately...
 ]
 
 .pull-right[
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-8-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ]
 ---
 # What is "normal"?
 
 * A normal distribution can take on any mean and standard deviation.
 
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-9-1.png" alt="" style="display: block; margin: auto;" /&gt;
 * Regardless of the mean and standard deviation, the probability of selecting any particular value of that population at random always sums to 1.
 * The empirical rule still applies (e.g., 68% of observations occur within 1 *SD* of the mean, 95.5% within 2 *SD* of mean, etc.).
 
@@ -192,7 +192,7 @@ A randomly selected observation has an approximately...
 
 * The .red-pink[**standard normal distribution**] has a mean of 0 and a standard deviation of 1.
   
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-10-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 * In this case, the x-axis represents `\(z\)`-scores, meaning an observation's value represents how far it is from the mean
 
@@ -205,14 +205,14 @@ A randomly selected observation has an approximately...
 # Area under the normal curve
 Suppose we wanted to know the probability of scoring at least 1.5 SD above the mean on a standardized test of academic achievement. 
 
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-11-1.png" alt="" style="display: block; margin: auto;" /&gt;
 To answer this question, we just need to find the area of the shaded portion under the curve.
 
 ---
 # Area under the normal curve
 * We can either use some calculus or (more straightforward) a `\(z\)`-score [look-up table](https://www.math.arizona.edu/~rsims/ma464/standardnormaltable.pdf) to calculate the area under the normal curve.
 
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-12-1.png" alt="" style="display: block; margin: auto;" /&gt;
 --
 Either approach would show the area above 1.5 SD of a standard normal curve is .07.
 
@@ -241,7 +241,7 @@ Let's try it with our WHO data:
 
 $$ z = \frac{76-71.64}{8.15} = 0.535$$
 
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-13-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -249,7 +249,7 @@ $$ z = \frac{76-71.64}{8.15} = 0.535$$
 
 The proportion of the area under the curve above a z-score of 0.53 is just under 0.30 ( `\(\approx\)` 0.296). Therefore, there is a 30 percent probability of randomly selecting a country with a national life expectancy greater than 76.
 
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-14-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -275,13 +275,13 @@ Our **population statistic** represents the true value across all countries.&lt;
 
 
 
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-16-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
 Our **sample statistic** will be our estimate of the population statistic using the countries we examine.
 
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-17-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ]
 
 .footnote[[1] Again, this is somewhat of a simplification...we're getting close to why...!]
@@ -297,10 +297,10 @@ Our **sample statistic** will be our estimate of the population statistic using 
 
 
 
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-19-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
-## Population v. sample distribution
+# Mean of Sample Means
 
 If we sample our population **100 times** and plot the estimated mean of each sample, the estimated means begin to form their own normal distribution. The mean of sample means is our .purple[**estimated population mean**] `\(\color{purple}{(\hat{\mu})}\)`.
 
@@ -309,7 +309,7 @@ If we sample our population **100 times** and plot the estimated mean of each sa
 
 
 
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-21-.gif" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-21-.gif" alt="" style="display: block; margin: auto;" /&gt;
 
 The mean of our sampling distribution (mean of means) approaches the .blue[**population mean**] `\(\color{blue}{({\mu})}\)`. 
 
@@ -318,7 +318,7 @@ If we sampled all possible samples of size *n* from our population, our mean of 
 ---
 # Central Limit Theorem (CLT)
 
-* Random sampling from the population **will return** means that will be asymptotically (approaching) normal in their distribution as the number of samples approaches infinity. With a little bit of math, the Central Limit Theorem proves this fact.
+* Random sampling from the population **will return** means that will be asymptotically (approaching) normal in their distribution as the sample size approaches infinity. With a little bit of math, the Central Limit Theorem proves this fact.
 
 * Because of that mathematical fact, we can conduct inference in statistics.
 
@@ -333,7 +333,7 @@ If we sampled all possible samples of size *n* from our population, our mean of 
 ]
 
 .pull-right[
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-22-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-22-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ]
 
 Even though our life expectancy distribution is only approximately normal, the distribution of our sample means **is** (approaching) normal.
@@ -397,7 +397,7 @@ We draw a sample and calculate the average life expectancy in the sample: 71.64.
 
 We construct our `\(z\)`-score as follows:
 
-`$$\frac{71.64-70}{8} = 0.205$$`
+`$$\frac{71.64-70}{\sqrt{64}} = 0.205$$`
 ---
 # `\(z\)`-test
 
@@ -466,7 +466,7 @@ but, when we calculate this in reality, we are using the .red-pink[**sample mean
 
 You can read a more detailed statistical treatment of [Bessel's correction](https://en.wikipedia.org/wiki/Bessel%27s_correction), but the key takeaway is that using sample statistics generates bias (inaccuracy) in the estimation of the population statistics. 
 
-To produce an unbiased estimate of the mean, variance or standard deviation, we should always subtract one from the sample size in the denominator. For example, when we construct the standard deviation of a sample, we should calculate it as:
+To produce an unbiased estimate of the variance or standard deviation, we should always subtract one from the sample size in the denominator. For example, when we construct the standard deviation of a sample, we should calculate it as:
 
 `$$s = \sqrt{\frac{\Sigma_{i=1}^n(x_i - \bar{x})^2}{n-1}}$$`
 
@@ -477,11 +477,11 @@ To produce an unbiased estimate of the mean, variance or standard deviation, we 
 * `\(t\)`-distributions with fewer degrees of freedom have "fatter" tails.
 
   
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-23-.gif" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-23-.gif" alt="" style="display: block; margin: auto;" /&gt;
 
 --
 
-As `\(n\)` increases, the `\(t\)`-distribution approaches (asymptotically) the normal distribution. In large-ish samples (basically &gt;650), the `\(t\)`- and `\(z\)`-statistics and associated tests are essentially indistinguishable.
+As `\(n\)` increases, the `\(t\)`-distribution approaches (asymptotically) the normal distribution. In large-ish samples (basically larger than 650), the `\(t\)`- and `\(z\)`-statistics and associated tests are essentially indistinguishable.
 
 
 ---
@@ -508,7 +508,7 @@ Suppose the known average life expectancy is 76 years. We collect a sample of al
 * With a `\(z\)`-test, we were able to find the number of observations that fell beyond a particular value. That value was our `\(z\)`-statistic.
 * The `\(t\)`-statistic is functionally similar to the `\(z\)`-statistic, but for the `\(t\)`-distribution.
 
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-24-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-24-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -519,8 +519,9 @@ Suppose the known average life expectancy is 76 years. We collect a sample of al
 
 Here is a similar animated graphic as on slide 34, but now highlighting the changing proportion of the curve falling beyond a given `\(t\)`-statistic; in this case `\(t=1\)`.
 
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-25-.gif" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-25-.gif" alt="" style="display: block; margin: auto;" /&gt;
 
+.footnote[Only shading one half of the distribution for clarity sake.]
 
 --
 
@@ -543,9 +544,9 @@ $$ t = \frac{\bar{x} - \mu}{\frac{s}{\sqrt{n}}} $$
 # Applying a `\(t\)`-test
 Suppose we have data from a sample of 10 countries around the Mediterranean with a mean life expectancy of 74.75 and standard deviation of 3.2.
 
-If our population mean is thought to be 76 `\((H_0: \hat{\mu} = 76)\)`, what is the probability of obtaining a sample mean of 74.75, **or a more extreme mean value**, due to random sampling variability?
+If our population mean is thought to be 76 `\((H_0: \mu = 76)\)`, what is the probability of obtaining a sample mean of 74.75, **or a more extreme mean value**, due to random sampling variability?
 `$$t(9) = \frac{74.75 - 76}{3.2/\sqrt{10}} = -1.24$$`
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-26-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 # Applying a `\(t\)`-test
@@ -553,13 +554,13 @@ If our population mean is thought to be 76 `\((H_0: \hat{\mu} = 76)\)`, what is 
 Assuming a population mean of 76 and sample size of 10...
 
 .pull-left[
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-27-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-27-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 ...the proportion of random samples that would demonstrate a sample mean **equal to or lower than 74.75** is 0.12 (i.e., *p* = 0.12).
 ]
 
 .pull-right[
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-28-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-28-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ...the proportion of random samples that would demonstrate a sample mean **equal to or more extreme than 74.75** is 0.24 (i.e., *p* = 0.24).
 ]
 
@@ -605,7 +606,7 @@ Tests the possibility of a significant difference in either direction.
 # Demonstration
 
 Dr. DSM finds that the mean post-intervention depression rating did not fall below the critical t-value for the one-tailed test. The new intervention group did not demonstrate significantly lower than normal post-treatment averages.
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-29-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-29-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 .blue[What conclusion was missed with the one-tailed test?]
 
@@ -620,7 +621,7 @@ With two-tailed tests, the total alpha is "split" across both tails of the distr
 
 * Critical t-values `\(t_{\alpha/2}(df)\)` are the values at which our alpha threshold is met.
   
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-30-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-30-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 If we conducted a t-test, our t-statistic would have to be less than -2.2622 or greater than 2.2622 to reject the null hypothesis.
 
@@ -631,12 +632,12 @@ If we conducted a t-test, our t-statistic would have to be less than -2.2622 or 
 
 .pull-left[
 Our observed t-value did not surpass our critical t-values.
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-31-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-31-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
 Our p-value is not less than .05 and does not satisfy our alpha threshold.
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-32-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-32-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ]
 
 Whether we compare our t-statistic to our critical t-values or look at our p-value, we come to the same conclusion.
@@ -645,7 +646,7 @@ Whether we compare our t-statistic to our critical t-values or look at our p-val
 ---
 # Interpretation of `\(t\)`-test
 
-&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-33-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_10_inference_files/figure-html/unnamed-chunk-33-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 Assuming a population mean of 76 and sample size of 10, the proportion of random samples that would demonstrate a sample mean **equal to or more extreme than 74.75** is 0.24 `\((t(9) = -1.24, p = 0.24)\)`. Because our p-value does not meet our alpha threshold of .05, we **fail to reject the null hypothesis**.
 
@@ -654,10 +655,10 @@ Thus, we can conclude that the mean life expectancy of this sample of countries 
 ---
 # Implementing in R
 
-Let's examine in our data whether the sample of countries labelled as economically "Developing" have a different average life expectancy than the "true" known population average.
+Let's examine in our data whether the sample of countries labelled as "low income" have a different average life expectancy than the "true" known population average.
 
 
-```r
+``` r
 low_inc &lt;- filter(who, status=="Developing")
 
 t.test(low_inc$life_expectancy, mu = 71.64)
@@ -683,7 +684,7 @@ t.test(low_inc$life_expectancy, mu = 71.64)
 Let's examine in our data whether the sample of countries labelled as economically "Developing" have a different average life expectancy than the "true" known population average.
 
 
-```r
+``` r
 # The defaults for t.test are to assume that 
 # you are conducting a two-sided one-sample test,
 # with an alpha threshold of 0.05. You can modify as needed:
@@ -711,7 +712,7 @@ t.test(low_inc$life_expectancy, mu = 71.64, alternative = "less")
 1. We can characterize the central tendency and variability of any distribution with several useful statistics
 2. The normal distribution has several features that allow us to state precisely how likely it is that we would observe any particular value under the normal curve
 3. Statistics calculated in samples that are drawn repeatedly from a population will form their own distributions. 
-4. Even if the population itself is not normal, the mean of sample means drawn from that population **will** be normal
+4. Even if the population itself is not normal, the distribution of sample means drawn from that population **will** be normal
 5. As a result, we can test whether any observed sample mean is different from the population mean
 6. Depending on whether or not we known the population variance, we can test this using either a `\(z\)`- or a `\(t\)`-test statistic
 
@@ -736,18 +737,18 @@ class: middle, inverse
 - LSWR Chapter 10: inference and CLT
 
 ### Quiz
-- Quiz #3: Opens 3:45pm on Oct. 31, closes at 5pm Nov. 1
+- Quiz #3: Opens on Oct. 29, closes at 5pm Oct. 30
 
 ### Assignment
-- Assignment #3 Due Nov. 8, 4:59pm
+- Assignment #3 Due Nov. 16, 11:59pm
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

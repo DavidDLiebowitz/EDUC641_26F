@@ -121,7 +121,7 @@ The normal distribution is a mathematical function that is a particularly specif
 * Standard Deviation $(\sigma)$
 
 It is defined by the following probability density function: 
-$$ p(X|\mu, \sigma) = \frac{1}{\sqrt{2\pi\sigma}}exp[-\frac{(X-\mu)^2}{2\sigma^2}] $$
+$$ p(X|\mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}}exp[-\frac{(X-\mu)^2}{2\sigma^2}] $$
 $$X\sim N(\mu,\sigma)$$
 .purple[*Don't need to know this formula!*]
 
@@ -145,7 +145,7 @@ Central Tendency:
 Variability:
 + 68% of observations are within 1 SD
 + 95% of  observations are within 2 SDs
-+ 99% of observations are within 3 SDs
++ 99.7% of observations are within 3 SDs
 
 Shape: 
 + Unimodal
@@ -291,8 +291,8 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
   annotate("text", x = .5, y = .2, label = "34%") +
     annotate("text", x = -1.5, y = .05, label = "13.5%") +
   annotate("text", x = 1.5, y = .05, label = "13.5%") +
-      annotate("text", x = -2.6, y = .04, label = "0.15%") +
-  annotate("text", x = 2.6, y = .04, label = "0.15%") +
+      annotate("text", x = -2.6, y = .04, label = "1.17%") +
+  annotate("text", x = 2.6, y = .04, label = "1.17%") +
   geom_segment(aes(x = 0, xend = 0, y = 0, yend = .38)) +
   geom_segment(aes(x = -2, xend = -2, y = 0, yend = .056)) +
   geom_segment(aes(x = 2, xend = 2, y = 0, yend = .056)) +
@@ -552,7 +552,7 @@ marrangeGrob(plots, nrow=2, ncol=2, top = paste("Estimated Population Means Acro
 ```
 
 ---
-## Population v. sample distribution
+# Mean of Sample Means
 
 If we sample our population **100 times** and plot the estimated mean of each sample, the estimated means begin to form their own normal distribution. The mean of sample means is our .purple[**estimated population mean**] $\color{purple}{(\hat{\mu})}$.
 
@@ -563,31 +563,32 @@ samp_means <- tibble(samp = 1:1000, means = map_dbl(region_samp, ~mean(.$life_ex
 ```
 
 
-```{r, animation.hook="gifski", interval = 0.4, echo = F, eval = T}
+```{r, animation.hook="gifski", interval = 0.3, echo = F, eval = T, dev = "ragg_png", dpi=96}
 for (i in 1:100) {
-  x <- ggplot(subset(samp_means, samp <= i), aes(means)) +
-    geom_histogram(fill = "orange", color = "grey") +
+
+  current_means <- samp_means$means[1:i]
+  running_mean <- mean(current_means)
+
+  x <- ggplot(
+    tibble(means = current_means),
+    aes(x = means)
+  ) +
+    geom_histogram(fill = "orange") +
     geom_vline(xintercept = 71.64, color = "blue") +
-    geom_vline(xintercept = mean(samp_means$means[samp_means$samp <= i]), color = "orange") +
-    geom_label(aes(
-      x = 71.64,
-      y = +Inf,
-      vjust = 2,
-      label = 71.64
-    ),
-    colour = "blue",
-    size = 4) +
-        geom_label(aes(
-      x = mean(samp_means$means[samp_means$samp <= i]),
-      y = +Inf,
-      vjust = 3.5,
-      label = paste(round(mean(samp_means$means[samp_means$samp <= i]), 2))
-    ),
-    colour = "orange",
-    size = 4) + 
-    xlim(65, 85) +
+    geom_vline(xintercept = running_mean, color = "orange") +
+    geom_label(
+      aes(x = 71.64, y = Inf, label = "71.64"),
+      vjust = 2, colour = "blue", size = 4
+    ) +
+    geom_label(
+      aes(x = running_mean, y = Inf,
+          label = round(running_mean, 2)),
+      vjust = 3.5, colour = "orange", size = 4
+    ) +
+    coord_cartesian(xlim = c(65, 85)) +
     xlab("Mean Life Expectancy") +
     theme_minimal()
+
   print(x)
 }
 
@@ -600,7 +601,7 @@ If we sampled all possible samples of size *n* from our population, our mean of 
 ---
 # Central Limit Theorem (CLT)
 
-* Random sampling from the population **will return** means that will be asymptotically (approaching) normal in their distribution as the number of samples approaches infinity. With a little bit of math, the Central Limit Theorem proves this fact.
+* Random sampling from the population **will return** means that will be asymptotically (approaching) normal in their distribution as the sample size approaches infinity. With a little bit of math, the Central Limit Theorem proves this fact.
 
 * Because of that mathematical fact, we can conduct inference in statistics.
 
@@ -615,29 +616,25 @@ If we sampled all possible samples of size *n* from our population, our mean of 
 ]
 
 .pull-right[
-```{r, parse = T, echo = F, fig.width=5, fig.height = 3}
+```{r, echo = F, fig.width=5, fig.height = 3, dev = "ragg_png", dpi = 96}
+mean_of_means <- mean(samp_means$means)
+sd_of_means <- sd(samp_means$means)
+
 ggplot(samp_means, aes(means)) +
   geom_histogram() +
-  geom_vline(xintercept = mean(samp_means$means), color = "red") +
-  geom_segment(
-    x = mean(samp_means$means),
-    xend = (mean(samp_means$means) + sd(samp_means$means)),
-    y = 30,
-    yend = 30,
-    color = "red"
-  ) +
-  geom_label(aes(
-    x = mean(samp_means$means),
-    y = +Inf,
-    vjust = 3,
-    label = paste('mu', "==", 71.64)
-  ), parse = T) +
-    geom_label(aes(
-    x = (mean(samp_means$means) + sd(samp_means$means)),
-    y = +Inf,
-    vjust = 6,
-    label = paste('sigma', "==", round(sd(samp_means$means), 2))
-  ), parse = T) +
+  geom_vline(xintercept = mean_of_means, color = "red") +
+  annotate("segment",
+           x = mean_of_means, xend = mean_of_means + sd_of_means,
+           y = 30, yend = 30,
+           color = "red", linewidth = 1) +
+  annotate("label",
+           x = mean_of_means, y = Inf, vjust = 1.5,
+           label = paste("mu", "==", 71.64), parse = T) +
+  annotate("label",
+           x = mean_of_means + sd_of_means / 2, y = 30, vjust = -0.4,
+           label = paste("sigma", "==", round(sd_of_means, 2)),
+           parse = T, color = "red") +
+  xlab("Sample means") +
   theme_classic()
 ```
 ]
@@ -703,7 +700,7 @@ We draw a sample and calculate the average life expectancy in the sample: 71.64.
 
 We construct our $z$-score as follows:
 
-$$\frac{71.64-70}{8} = 0.205$$
+$$\frac{71.64-70}{\sqrt{64}} = 0.205$$
 ---
 # $z$-test
 
@@ -772,7 +769,7 @@ but, when we calculate this in reality, we are using the .red-pink[**sample mean
 
 You can read a more detailed statistical treatment of [Bessel's correction](https://en.wikipedia.org/wiki/Bessel%27s_correction), but the key takeaway is that using sample statistics generates bias (inaccuracy) in the estimation of the population statistics. 
 
-To produce an unbiased estimate of the mean, variance or standard deviation, we should always subtract one from the sample size in the denominator. For example, when we construct the standard deviation of a sample, we should calculate it as:
+To produce an unbiased estimate of the variance or standard deviation, we should always subtract one from the sample size in the denominator. For example, when we construct the standard deviation of a sample, we should calculate it as:
 
 $$s = \sqrt{\frac{\Sigma_{i=1}^n(x_i - \bar{x})^2}{n-1}}$$
 
@@ -805,7 +802,7 @@ print(x)
 
 --
 
-As $n$ increases, the $t$-distribution approaches (asymptotically) the normal distribution. In large-ish samples (basically >650), the $t$- and $z$-statistics and associated tests are essentially indistinguishable.
+As $n$ increases, the $t$-distribution approaches (asymptotically) the normal distribution. In large-ish samples (basically larger than 650), the $t$- and $z$-statistics and associated tests are essentially indistinguishable.
 
 
 ---
@@ -899,6 +896,7 @@ for (i in 1:10) {
 }
 ```
 
+.footnote[Only shading one half of the distribution for clarity sake.]
 
 --
 
@@ -921,7 +919,7 @@ $$ t = \frac{\bar{x} - \mu}{\frac{s}{\sqrt{n}}} $$
 # Applying a $t$-test
 Suppose we have data from a sample of 10 countries around the Mediterranean with a mean life expectancy of 74.75 and standard deviation of 3.2.
 
-If our population mean is thought to be 76 $(H_0: \hat{\mu} = 76)$, what is the probability of obtaining a sample mean of 74.75, **or a more extreme mean value**, due to random sampling variability?
+If our population mean is thought to be 76 $(H_0: \mu = 76)$, what is the probability of obtaining a sample mean of 74.75, **or a more extreme mean value**, due to random sampling variability?
 $$t(9) = \frac{74.75 - 76}{3.2/\sqrt{10}} = -1.24$$
 ```{r}
 ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
@@ -1209,7 +1207,7 @@ Thus, we can conclude that the mean life expectancy of this sample of countries 
 ---
 # Implementing in R
 
-Let's examine in our data whether the sample of countries labelled as economically "Developing" have a different average life expectancy than the "true" known population average.
+Let's examine in our data whether the sample of countries labelled as "low income" have a different average life expectancy than the "true" known population average.
 
 ```{r, echo=T}
 low_inc <- filter(who, status=="Developing")
@@ -1238,7 +1236,7 @@ t.test(low_inc$life_expectancy, mu = 71.64, alternative = "less")
 1. We can characterize the central tendency and variability of any distribution with several useful statistics
 2. The normal distribution has several features that allow us to state precisely how likely it is that we would observe any particular value under the normal curve
 3. Statistics calculated in samples that are drawn repeatedly from a population will form their own distributions. 
-4. Even if the population itself is not normal, the mean of sample means drawn from that population **will** be normal
+4. Even if the population itself is not normal, the distribution of sample means drawn from that population **will** be normal
 5. As a result, we can test whether any observed sample mean is different from the population mean
 6. Depending on whether or not we known the population variance, we can test this using either a $z$- or a $t$-test statistic
 
@@ -1263,8 +1261,8 @@ class: middle, inverse
 - LSWR Chapter 10: inference and CLT
 
 ### Quiz
-- Quiz #3: Opens 3:45pm on Oct. 31, closes at 5pm Nov. 1
+- Quiz #3: Opens on Oct. 29, closes at 5pm Oct. 30
 
 ### Assignment
-- Assignment #3 Due Nov. 8, 4:59pm
+- Assignment #3 Due Nov. 16, 11:59pm
 

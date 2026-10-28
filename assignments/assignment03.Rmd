@@ -56,7 +56,7 @@ Details on all variables are as follows:
 Review the codebook above and transform any variable into its correct type (format), as needed. **(1 point)**
 
 
-1.2. Write your own code to view the structure of the dataset and write 3-4 sentences about the structure of the data. How many rows/observations are there? How many variables are there? What type is each variable (after converting types)? What does each variable represent? **(1 point)**
+1.2. Write your own code to view the structure of the dataset and write 3-4 sentences about the structure of the data. How many rows/observations are there? How many variables are there? What is the measurement scale for each variable (after converting types)? What does each variable represent? **(1 point)**
 
 #### 2. Descriptive statistics of the outcome variable
 
