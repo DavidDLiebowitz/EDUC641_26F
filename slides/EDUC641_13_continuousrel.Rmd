@@ -64,22 +64,6 @@ options(knitr.table.format = "html")
 
 ```
 
-
-.pull-left[
-```{r, echo=FALSE}
-include_graphics("rtr1.jpg")
-include_graphics("rtr3.jpg")
-```
-]
-
-.pull-right[
-```{r, echo=F}
-include_graphics("rtr2.jpg")
-include_graphics("rtr4.jpg")
-```
-]
-
----
 # Roadmap
 
 ```{r, out.width = "90%", echo=F}
@@ -434,6 +418,103 @@ pin6
 pin6 + geom_smooth(method = lm, se = F)
 
 ```
+
+---
+# Bivariate relationships
+
+**Consider these five features of bivariate relationships:**
+
+- Direction
+- Strength
+- Magnitude
+
+.grey-light[
+- Linearity
+- Outliers
+]
+
+---
+## Bivariate relationships: Direction
+
+```{r, echo=F, fig.height=5}
+set.seed(123)
+x <- seq(0, 50)
+y <- x + 10 + rnorm(length(x), 0, 5)
+y2 <- abs(x-50) + 10 + rnorm(length(x), 0, 5)
+pos <- cbind.data.frame(x, y)
+neg <- cbind.data.frame(x, y2)
+
+positive <- ggplot(pos, aes(x, y)) +
+  geom_point() +
+  ggtitle("Positive") +
+  theme_minimal(base_size=16) +
+    theme(axis.title.x = element_blank(), axis.title.y = element_blank()) 
+
+negative <- ggplot(neg, aes(x, y2)) +
+  geom_point() +
+  ggtitle("Negative") +
+  theme_minimal(base_size=16) +
+    theme(axis.title.x = element_blank(), axis.title.y = element_blank()) 
+
+gridExtra::grid.arrange(positive, negative, ncol=2)
+
+```
+
+---
+## Bivariate relationships: Strength
+
+```{r, echo=F, fig.height=5}
+pos <- pos %>% mutate(y4 = x + 20 + rnorm(length(x), 0, 15))
+
+strong <- ggplot(pos, aes(x, y)) +
+  geom_point() +
+  geom_smooth(method='lm', se=F) +
+  ggtitle("Stronger") +
+  theme_minimal(base_size=16) +
+    expand_limits(y=c(0,100)) +
+    theme(axis.title.x = element_blank(), axis.title.y = element_blank()) 
+
+weak <- ggplot(pos, aes(x, y4)) +
+  geom_point() +
+  geom_smooth(method='lm', se=F) +
+  ggtitle("Weaker") +
+  theme_minimal(base_size=16) +
+    expand_limits(y=c(0,100)) +
+    theme(axis.title.x = element_blank(), axis.title.y = element_blank()) 
+
+gridExtra::grid.arrange(strong, weak, ncol=2)
+```
+
+**Note that these have the same slope (magnitude)**
+
+---
+## Bivariate relationships: Magnitude
+
+```{r, echo=F, fig.height=5}
+pos <- pos %>% mutate(y5 = 1.75*x + 10 + rnorm(length(x), 0, 5))
+
+
+shallow <- ggplot(pos, aes(x, y)) +
+  geom_point() +
+  geom_smooth(method='lm', se=F) +
+  ggtitle("Relatively shallow") +
+  theme_minimal(base_size=16) +
+    expand_limits(y=c(0,100)) +
+    theme(axis.title.x = element_blank(), axis.title.y = element_blank()) 
+
+steep <- ggplot(pos, aes(x, y5)) +
+  geom_point() +
+  geom_smooth(method='lm', se=F) +
+  ggtitle("Relatively steep") +
+  theme_minimal(base_size=16) +
+    expand_limits(y=c(0,100)) +
+    theme(axis.title.x = element_blank(), axis.title.y = element_blank()) 
+
+gridExtra::grid.arrange(steep, shallow, ncol=2)
+```
+**Note that these have the same strength (tightness of fit)**
+
+
 ---
 # An aside about the origin
 ```{r, echo = F, fig.height=5.5}
@@ -468,7 +549,7 @@ g3 <- ggplot(who, aes(x = schooling, y = life_expectancy)) +
 gridExtra::grid.arrange(g1, g3, ncol=2)
 ```
 
-.small[*Figures that describe relationships between two variables (e.g., scatter plots) might (or might not) include the origin (0, 0). The key concept these charts illustrate is the relationship. By adjusting the scale and range of each axis, we can make the relationship "look" different. But the strength and magnitude are the same.* More to come in EDUC 643...]
+.small[*Figures that describe relationships between two variables (e.g., scatter plots) might (or might not) include the origin (0, 0). The key concept these charts illustrate is the relationship. By adjusting the scale and range of each axis, we can make the relationship "look" different. But the strength and magnitude are the same.* Much more to come in EDUC 643...]
 
 
 ---
@@ -497,8 +578,16 @@ class: middle, inverse
 - LSWR Chapter 10: Law of large numbers and CLT
 
 ### Quiz
-- Quiz #4: Opens 3:45pm on Nov. 14, closes at 5pm Nov. 15
+- Quiz #4: Opens Nov. 10 (now!), closes at 6pm Nov. 12
 
 ### Assignment
-- Assignment #4 Due Dec. 2, 11:59pm
+- Assignment #3 Due Nov. 16, 11:59pm
+- Assignment #4 Due Nov. 30, 11:59pm
+
+
+---
+class: middle, inverse
+
+# Quiz
+
 

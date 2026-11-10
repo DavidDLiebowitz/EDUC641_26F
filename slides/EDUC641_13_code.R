@@ -57,7 +57,7 @@ summary(who$schooling)
 ### Visualizing bivariate relationships
 
 
-# Visualize bivariate relationship (with observation label)
+# Visualize bivariate relationship (with country observation label)
 ggplot(data = who, aes(x = schooling, y = life_expectancy)) + 
   geom_label(aes(label=country)) + 
   # the commands below are for formatting purposes only
