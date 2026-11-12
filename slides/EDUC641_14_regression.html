@@ -4,7 +4,7 @@
     <title>Examining Relationships of Continuous Variables</title>
     <meta charset="utf-8" />
     <meta name="author" content="David D. Liebowitz" />
-    <script src="EDUC641_14_regression_files/header-attrs-2.20/header-attrs.js"></script>
+    <script src="EDUC641_14_regression_files/header-attrs-2.31/header-attrs.js"></script>
     <link href="EDUC641_14_regression_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="EDUC641_14_regression_files/remark-css-0.0.1/uo.css" rel="stylesheet" />
     <link href="EDUC641_14_regression_files/remark-css-0.0.1/ki-fonts.css" rel="stylesheet" />
@@ -32,7 +32,7 @@ class: center, middle, inverse, title-slide
 
 # Roadmap
 
-&lt;img src="Roadmap_4.png" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;img src="Roadmap_4.png" alt="" width="90%" style="display: block; margin: auto;" /&gt;
 
                                                        
 ---
@@ -81,7 +81,7 @@ class: middle, inverse
 ---
 # Reading our data in
 
-```r
+``` r
 who &lt;- read.csv(here("data/life_expectancy.csv")) %&gt;%
   # first making variable names take a common format
   janitor::clean_names() %&gt;% 
@@ -100,7 +100,7 @@ who &lt;- read.csv(here("data/life_expectancy.csv")) %&gt;%
 
 ### Identify missingness
 
-```r
+``` r
 sum(is.na(who$life_expectancy))
 ```
 
@@ -108,7 +108,7 @@ sum(is.na(who$life_expectancy))
 #&gt; [1] 0
 ```
 
-```r
+``` r
 sum(is.na(who$schooling))
 ```
 
@@ -116,7 +116,7 @@ sum(is.na(who$schooling))
 #&gt; [1] 10
 ```
 
-```r
+``` r
 ### For the really ambitious...
 sapply(who, function(x) sum(is.na(x)))
 ```
@@ -135,12 +135,12 @@ sapply(who, function(x) sum(is.na(x)))
 
 - .red-pink[**Listwise**]: any observations with any missingness (NA) for any of the variables to be used in our analysis are dropped. Analysis only conducted on observations that have complete data
 
-- .red-pink[**Pairwise**]: observations with missingness for some of the variables to be used in analysis are retained and included in sample when the particular analysis does rely on that variable, but are necessarily excluded in analyses that rely on the variable with missingness.
+- .red-pink[**Pairwise**]: observations with missingness for some of the variables to be used in analysis are retained and included in sample when the particular analysis does not rely on that variable, but are necessarily excluded in analyses that rely on the variable with missingness.
 
 --
 
 
-```r
+``` r
 mean(who$life_expectancy, na.rm = T)
 ```
 
@@ -148,7 +148,7 @@ mean(who$life_expectancy, na.rm = T)
 #&gt; [1] 71.63934
 ```
 
-```r
+``` r
 mean(who$schooling, na.rm = T)
 ```
 
@@ -170,13 +170,13 @@ mean(who$schooling, na.rm = T)
 ]
 
 .pull-right[
-&lt;img src="bttf.gif" style="display: block; margin: auto;" /&gt;
+&lt;img src="bttf.gif" alt="" style="display: block; margin: auto;" /&gt;
 ]
 
 --
 
 
-```r
+``` r
 who &lt;- filter(who, !is.na(schooling))
 nrow(who)
 ```
@@ -189,11 +189,11 @@ nrow(who)
 # A reminder of our relationship
 
 
-```r
+``` r
 biv &lt;- ggplot(data = who, aes(x = schooling, y = life_expectancy)) + 
         geom_point() 
 ```
-&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-8-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle, inverse
@@ -204,17 +204,17 @@ class: middle, inverse
 ---
 # OLS-fitted regression line
 
-```r
+``` r
 biv + geom_smooth(method = lm, se = F)
 ```
 
-&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-9-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 .red-pink[*The fitted regression line tells us the best prediction for the values of LIFE_EXPECTANCY.*]
 
 ---
 # Some intuition
-&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-10-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -234,13 +234,13 @@ As with any straight line, it can be characterized by a simple algebraic equatio
 --
 
 .blue[**What do each of these terms represent?**]
-&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-12-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-12-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 # Pictures to equations
 
 .small[.red[**HOWEVER**], we don't represent lines of best fit with equations in slope-intercept form! .blue[**Why not?**]]
-&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-13-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-13-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -256,7 +256,7 @@ As with any straight line, it can be characterized by a simple algebraic equatio
 ---
 # Fitting a regression in R
 
-```r
+``` r
 fit &lt;- lm(life_expectancy ~ schooling, data=who)
 summary(fit)
 ```
@@ -316,7 +316,7 @@ $$
 # Fitted values
 
 Can substitute values for the "predictor" `\((SCHOOLING)\)` into the fitted equation to compute the *predicted* values of `\(LIFE\_EXPECTANCY\)`. 
-&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-16-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-16-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -327,14 +327,14 @@ Can do this for our old friend Chile ... and all others...
 
 So we can re-construct the line of best fit from the fitted values:
 
-&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-17-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-17-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 # Fitted values
 
-Note that the fitted line always goes through the average of the predictors
+Note that the fitted line always goes through the average of the two variables
 
-```r
+``` r
 mean(who$schooling)
 ```
 
@@ -342,7 +342,7 @@ mean(who$schooling)
 #&gt; [1] 12.92717
 ```
 
-```r
+``` r
 mean(who$life_expectancy)
 ```
 
@@ -353,8 +353,8 @@ mean(who$life_expectancy)
 ---
 # Fitted values
 
-Note that the fitted line always goes through the average of the predictors
-&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-19-1.svg" style="display: block; margin: auto;" /&gt;
+Note that the fitted line always goes through the average of the two variables
+&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-19-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle, inverse
@@ -380,26 +380,22 @@ class: middle, inverse
 # To Dos
 
 ### Reading
-- LSWR Chapter 15.1 and 15.2: bivariate regression by Nov. 21 class
+- LSWR Chapter 15.1 and 15.2: bivariate regression by Nov. 19 class
 
 ### Assignments
-- Assignment #4 due Dec. 2 at 11:59PM
+- Assignment #4 due Nov. 30 at 11:59PM
 
 ### Quizzes
-- Quiz #4 (now!) due 11/15 at 5pm
-- Quiz #5 (last one!!!) due 11/27 at 5pm
+- Quiz #5 (last one!!!) due 11/25 at 12pm (noon)
 
----
-class: middle, inverse
 
-# Quiz
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

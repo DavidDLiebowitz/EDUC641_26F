@@ -151,7 +151,7 @@ sapply(who, function(x) sum(is.na(x)))
 
 - .red-pink[**Listwise**]: any observations with any missingness (NA) for any of the variables to be used in our analysis are dropped. Analysis only conducted on observations that have complete data
 
-- .red-pink[**Pairwise**]: observations with missingness for some of the variables to be used in analysis are retained and included in sample when the particular analysis does rely on that variable, but are necessarily excluded in analyses that rely on the variable with missingness.
+- .red-pink[**Pairwise**]: observations with missingness for some of the variables to be used in analysis are retained and included in sample when the particular analysis does not rely on that variable, but are necessarily excluded in analyses that rely on the variable with missingness.
 
 --
 
@@ -345,7 +345,7 @@ fit_val
 ---
 # Fitted values
 
-Note that the fitted line always goes through the average of the predictors
+Note that the fitted line always goes through the average of the two variables
 ```{r, echo=T}
 mean(who$schooling)
 mean(who$life_expectancy)
@@ -354,7 +354,7 @@ mean(who$life_expectancy)
 ---
 # Fitted values
 
-Note that the fitted line always goes through the average of the predictors
+Note that the fitted line always goes through the average of the two variables
 ```{r, echo = F, fig.height = 5.5}
 fit_val +
   geom_vline(xintercept = 12.93, col = "red", linetype="dashed") +
@@ -388,16 +388,12 @@ class: middle, inverse
 # To Dos
 
 ### Reading
-- LSWR Chapter 15.1 and 15.2: bivariate regression by Nov. 21 class
+- LSWR Chapter 15.1 and 15.2: bivariate regression by Nov. 19 class
 
 ### Assignments
-- Assignment #4 due Dec. 2 at 11:59PM
+- Assignment #4 due Nov. 30 at 11:59PM
 
 ### Quizzes
-- Quiz #4 (now!) due 11/15 at 5pm
-- Quiz #5 (last one!!!) due 11/27 at 5pm
+- Quiz #5 (last one!!!) due 11/25 at 12pm (noon)
 
----
-class: middle, inverse
 
-# Quiz
